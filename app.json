@@ -1,0 +1,44 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/service/service",
+    "pages/party/party",
+    "pages/me/me"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  },
+"tabBar": {
+  "list": [{
+    "pagePath": "pages/index/index",
+    "text": "首页",
+    "iconPath": "images/index.png",
+    "selectedIconPath": "images/selectedindex.png"
+  },
+  {
+    "pagePath": "pages/service/service",
+    "text": "服务",
+    "iconPath": "images/service.png",
+    "selectedIconPath": "images/selectedservice.png"
+  },
+  {
+    "pagePath": "pages/party/party",
+    "text": "党政",
+    "iconPath": "images/party.png",
+    "selectedIconPath": "images/selectedparty.png"
+  },
+  {
+    "pagePath": "pages/me/me",
+    "text": "我的",
+    "iconPath": "images/me.png",
+    "selectedIconPath": "images/selectedme.png"
+  }]
+},
+  "enablePullDownRefresh": true,
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
