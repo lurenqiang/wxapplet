@@ -4,7 +4,11 @@
     "pages/logs/logs",
     "pages/service/service",
     "pages/party/party",
-    "pages/me/me"
+    "pages/me/me",
+    "pages/auth/login/login",
+    "pages/auth/accountLogin/accountLogin",
+    "pages/auth/register/register",
+    "pages/auth/reset/reset"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -38,7 +42,6 @@
     "selectedIconPath": "images/selectedme.png"
   }]
 },
-  "enablePullDownRefresh": true,
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }
