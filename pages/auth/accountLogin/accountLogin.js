@@ -106,7 +106,7 @@ Page({
             data: res.data.data.token,
             success: function() {
               wx.switchTab({
-                url: '/pages/index/index'
+                url: '/pages/ucenter/index/index'
               });
             }
           });
