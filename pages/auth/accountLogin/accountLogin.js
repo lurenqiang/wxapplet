@@ -110,12 +110,13 @@ Page({
               });
             }
           });
+          console.log("token--------"+wx.getStorageSync('token'));
         } else {
           that.setData({
             loginErrorCount: that.data.loginErrorCount + 1
           });
           app.globalData.hasLogin = false;
-          util.showErrorToast('账户登录失败');
+          util.showErrorToast(res.data.errmsg);
         }
       }
     });

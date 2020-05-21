@@ -63,6 +63,26 @@
 					"pathName": "pages/auth/login/login",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/auth/register/register",
+					"pathName": "pages/auth/register/register",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/ucenter/index/index",
+					"pathName": "pages/ucenter/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/auth/accountLogin/accountLogin",
+					"pathName": "pages/auth/accountLogin/accountLogin",
+					"scene": null
 				}
 			]
 		}

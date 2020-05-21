@@ -1,5 +1,5 @@
 <!--pages/auth/register/register.wxml-->
-<view class="container">
+<view class="container1">
   <view class="form-box">
 
     <view class="form-item">

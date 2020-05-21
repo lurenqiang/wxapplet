@@ -1,6 +1,6 @@
 /* pages/auth/register/register.wxss */
 .form-box {
-  width: 100%;
+  width: 80%;
   height: auto;
   overflow: hidden;
   padding: 0 40rpx;
@@ -36,7 +36,7 @@
 
 .form-item-code .form-item {
   float: left;
-  width: 350rpx;
+  width: 200rpx;
 }
 
 .form-item-code .code-btn {
@@ -60,9 +60,9 @@
 .register-btn {
   margin: 60rpx 0 40rpx 0;
   height: 96rpx;
-  line-height: 96rpx;
+  line-height: 46rpx;
   color: #fff;
   font-size: 30rpx;
   width: 100%;
-  border-radius: 6rpx;
+  border-radius: 16rpx;
 }

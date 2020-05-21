@@ -4,11 +4,11 @@
     "pages/logs/logs",
     "pages/service/service",
     "pages/party/party",
-    "pages/me/me",
     "pages/auth/login/login",
     "pages/auth/accountLogin/accountLogin",
     "pages/auth/register/register",
-    "pages/auth/reset/reset"
+    "pages/auth/reset/reset",
+    "pages/ucenter/index/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -36,12 +36,31 @@
     "selectedIconPath": "images/selectedparty.png"
   },
   {
-    "pagePath": "pages/me/me",
-    "text": "我的",
+    "pagePath": "pages/ucenter/index/index",
+    "text": "个人",
     "iconPath": "images/me.png",
     "selectedIconPath": "images/selectedme.png"
   }]
 },
-  "style": "v2",
+"debug": true,
+"usingComponents": {
+    "van-cell": "./lib/vant-weapp/cell/index",
+    "van-cell-group": "./lib/vant-weapp/cell-group/index",
+    "van-picker": "./lib/vant-weapp/picker/index",
+    "van-popup": "./lib/vant-weapp/popup/index",
+    "van-field": "./lib/vant-weapp/field/index",
+    "van-uploader": "./lib/vant-weapp/uploader/index",
+    "van-button": "./lib/vant-weapp/button/index",
+    "van-tag": "./lib/vant-weapp/tag/index",
+    "van-icon": "./lib/vant-weapp/icon/index",
+    "van-checkbox": "./lib/vant-weapp/checkbox/index",
+    "van-steps": "./lib/vant-weapp/steps/index"
+},
+"networkTimeout": {
+  "request": 10000,
+  "connectSocket": 10000,
+  "uploadFile": 10000,
+  "downloadFile": 10000
+},
   "sitemapLocation": "sitemap.json"
 }

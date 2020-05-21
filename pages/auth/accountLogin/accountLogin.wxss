@@ -1,6 +1,6 @@
 /* pages/auth/accountLogin/accountLogin.wxss */
 .form-box {
-  width: 100%;
+  width: 80%;
   height: auto;
   overflow: hidden;
   padding: 0 40rpx;
@@ -79,7 +79,7 @@
   border-top-right-radius: 50rpx;
   border-bottom-right-radius: 50rpx;
   letter-spacing: 3rpx;
-  background-image: linear-gradient(to right, #9a9ba1 0%, #9a9ba1 100%);
+  background-image: linear-gradient(to right, #0ca06f 0%, #cadf0c 100%);
 }
 
 .form-item-text {

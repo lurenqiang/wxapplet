@@ -80,6 +80,10 @@ Page({
       user.loginByWeixin(e.detail.userInfo).then(res => {
         app.globalData.hasLogin = true;
 
+        //测试
+        // wx.navigateTo({
+        //   url: '/pages/auth/register/register'
+        // });
         wx.navigateBack({
           delta: 1
         })
