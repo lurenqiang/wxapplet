@@ -7,12 +7,11 @@
     </view>
   </view>
 
-  <view class='separate'></view>
+  <view class='separate'>
+  </view>
 
-  <view class='user_area'>
-    <view class='user_row' bindtap='goOrder'>
-      <view class='user_row_left'>我的订单</view>
-      <van-icon class='user_row_right' name="arrow" />      
+    <view class='user_row'>
+      <view class='user_row_left'>我的订单</view> 
     </view>
     <view class='user_column'>
       <view class='user_column_item' bindtap='goOrderIndex' data-index='1' data-route='/pages/ucenter/order/order'>
@@ -41,8 +40,6 @@
         <view class='user_column_item_text'>售后</view>
       </view>
     </view>
-  </view>
-
   <view class='separate'></view>
 
   <view class='user_row'>

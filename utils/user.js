@@ -57,7 +57,6 @@ function loginByWeixin(userInfo) {
           //存储用户信息
           wx.setStorageSync('userInfo', res.data.userInfo);
           wx.setStorageSync('token', res.data.token);
-          console.log("token-----"+res.data.token);
           resolve(res);
         } else {
           reject(res);
@@ -79,7 +78,7 @@ function checkLogin() {
     if (wx.getStorageSync('userInfo') && wx.getStorageSync('token')) {
       checkSession().then(() => {
         resolve(true);
-        console.log("微信用户token还有效")
+        console.log(wx.getStorageSync('userInfo').nickName,"token还有效");
       }).catch(() => {
         reject(false);
       });

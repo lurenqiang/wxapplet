@@ -110,7 +110,6 @@ Page({
               });
             }
           });
-          console.log("token--------"+wx.getStorageSync('token'));
         } else {
           that.setData({
             loginErrorCount: that.data.loginErrorCount + 1

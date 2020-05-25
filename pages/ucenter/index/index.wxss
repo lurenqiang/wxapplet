@@ -143,12 +143,14 @@ page {
   height: 140rpx;
   text-align: center;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  float: left;
+  flex-direction: column;
+  /* justify-content: center; */
+   align-items: center;
+  /*flex-wrap: wrap;
+  float: left; */
   background: #fff;
   border-radius: 0;
+  padding: 0%;
 }
 
 .user_column_item_phone::after {

@@ -82,6 +82,20 @@
 					"id": -1,
 					"name": "pages/auth/accountLogin/accountLogin",
 					"pathName": "pages/auth/accountLogin/accountLogin",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/ucenter/help/help",
+					"pathName": "pages/ucenter/help/help",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/ucenter/feedback/feedback",
+					"pathName": "pages/ucenter/feedback/feedback",
 					"scene": null
 				}
 			]

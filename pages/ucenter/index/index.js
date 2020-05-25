@@ -245,12 +245,12 @@ if (app.globalData.hasLogin) {
   },
   aboutUs: function() {
     wx.navigateTo({
-      url: '/pages/about/about'
+      url: '/pages/ucenter/about/about'
     });
   },
   goHelp: function () {
     wx.navigateTo({
-      url: '/pages/help/help'
+      url: '/pages/ucenter/help/help'
     });
   },  
   exitLogin: function() {
@@ -262,7 +262,6 @@ if (app.globalData.hasLogin) {
         if (!res.confirm) {
           return;
         }
-
         util.request(api.AuthLogout, {}, 'POST');
         app.globalData.hasLogin = false;
         wx.removeStorageSync('token');
