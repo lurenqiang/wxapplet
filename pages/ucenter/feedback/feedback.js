@@ -125,7 +125,7 @@ Page({
       this.setData({
         mobile: ''
       });
-      util.showErrorToast('请输入手机号码');
+      util.showErrorToast('请输入正确的手机号码');
       return false;
     }
 

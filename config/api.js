@@ -21,5 +21,11 @@ module.exports = {
   IssueList: WxApiRoot + 'issue/list', //帮助信息
   
   FeedbackAdd: WxApiRoot + 'feedback/submit', //添加反馈
-  StorageUpload: WxApiRoot + 'storage/upload', //图片上传,
+  StorageUpload: WxApiRoot + 'storage/upload', //图片上传
+
+  CouponList: WxApiRoot + 'coupon/list', //优惠券列表
+  CouponMyList: WxApiRoot + 'coupon/mylist', //我的优惠券列表
+  //CouponSelectList: WxApiRoot + 'coupon/selectlist', //当前订单可用优惠券列表
+  CouponReceive: WxApiRoot + 'coupon/receive', //优惠券领取
+  CouponExchange: WxApiRoot + 'coupon/exchange', //优惠券兑换
 };

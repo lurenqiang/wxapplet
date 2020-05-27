@@ -10,7 +10,13 @@
     "pages/auth/reset/reset",
     "pages/ucenter/index/index",
     "pages/ucenter/help/help",
-    "pages/ucenter/feedback/feedback"
+    "pages/ucenter/feedback/feedback",
+    "pages/ucenter/personalInfo/personalInfo",
+    "pages/ucenter/footprint/footprint",
+    "pages/ucenter/collect/collect",
+    "pages/ucenter/myLifeService/myLifeService",
+    "pages/ucenter/couponList/couponList",
+    "pages/ucenter/couponArea/couponArea"
   ],
   "window":{
     "backgroundTextStyle":"light",

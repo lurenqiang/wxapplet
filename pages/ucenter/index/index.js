@@ -149,10 +149,10 @@ if (app.globalData.hasLogin) {
       });
     };
   },
-  goGroupon() {
+  goLifeService() {
     if (this.data.hasLogin) {
       wx.navigateTo({
-        url: "/pages/groupon/myGroupon/myGroupon"
+        url: "/pages/ucenter/myLifeService/myLifeService"
       });
     } else {
       wx.navigateTo({
@@ -193,10 +193,10 @@ if (app.globalData.hasLogin) {
       });
     };
   },
-  goAddress() {
+  goPersonalInfo() {
     if (this.data.hasLogin) {
       wx.navigateTo({
-        url: "/pages/ucenter/address/address"
+        url: "/pages/ucenter/personalInfo/personalInfo"
       });
     } else {
       wx.navigateTo({
