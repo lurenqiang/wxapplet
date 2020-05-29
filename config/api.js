@@ -23,9 +23,13 @@ module.exports = {
   FeedbackAdd: WxApiRoot + 'feedback/submit', //添加反馈
   StorageUpload: WxApiRoot + 'storage/upload', //图片上传
 
-  CouponList: WxApiRoot + 'coupon/list', //优惠券列表
-  CouponMyList: WxApiRoot + 'coupon/mylist', //我的优惠券列表
-  //CouponSelectList: WxApiRoot + 'coupon/selectlist', //当前订单可用优惠券列表
-  CouponReceive: WxApiRoot + 'coupon/receive', //优惠券领取
-  CouponExchange: WxApiRoot + 'coupon/exchange', //优惠券兑换
+  CouponList: WxApiRoot + 'coupon/list', //福利券列表
+  CouponMyList: WxApiRoot + 'coupon/mylist', //我的福利券列表
+  //CouponSelectList: WxApiRoot + 'coupon/selectlist', //当前订单可用福利券列表
+  CouponReceive: WxApiRoot + 'coupon/receive', //福利券领取
+  CouponExchange: WxApiRoot + 'coupon/exchange', //福利券兑换
+  CouponConsume: WxApiRoot + 'coupon/consume', //消费福利券
+
+  CollectList: WxApiRoot + 'collect/list', //收藏列表
+  CollectAddOrDelete: WxApiRoot + 'collect/addordelete', //添加或取消收藏
 };

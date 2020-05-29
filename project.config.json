@@ -103,6 +103,13 @@
 					"id": -1,
 					"name": "pages/ucenter/couponList/couponList",
 					"pathName": "pages/ucenter/couponList/couponList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/ucenter/collect/collect",
+					"pathName": "pages/ucenter/collect/collect",
 					"scene": null
 				}
 			]

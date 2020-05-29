@@ -24,13 +24,13 @@
     </view>
 
     <view class="help" wx:if="{{status == 0}}">
-      <van-icon name="question-o" />
+      <van-icon name="question-o" bindtap="help"/>
       使用说明
     </view>
 
     <scroll-view class="coupon-list" scroll-y="true" scroll-top="{{scrollTop}}">
 
-      <view class="item {{ status == 0 ? 'active' : ''}}" wx:for="{{couponList}}" wx:for-index="index" wx:for-item="item" wx:key="id">
+      <view class="item {{ status == 0 ? 'active' : ''}}" wx:for="{{couponList}}" wx:for-index="index" wx:for-item="item" wx:key="uuid" bindtap="useCoupon" data-index="{{index}}">
         <view class="tag">{{item.tag}}</view>
         <view class="content">
           <view class="left">

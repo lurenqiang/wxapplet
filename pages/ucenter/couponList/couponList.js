@@ -16,7 +16,8 @@ Page({
     limit: 10,
     count: 0,
     scrollTop: 0,
-    showPage: false
+    showPage: false,
+    hasonShow: false
   },
 
   /**
@@ -37,7 +38,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+      let that = this;
+      //解决只显示一次onShow的问题,避免重复加载
+      if(!that.hasonShow){
+        that.hasonShow = true;
+        return
+      }
+      that.onLoad();
   },
 
   /**
@@ -135,6 +142,38 @@ Page({
       }
     });
   },
+  useCoupon: function(e) {
+    var that = this;
+    wx.showModal({
+      title: '',
+      confirmColor: '#b4282d',
+      content: '确定使用该福利券？',
+      success: function(res) {
+        if (!res.confirm) {
+          return;
+        }
+        let index =e.currentTarget.dataset.index;
+        let uuid = that.data.couponList[index].uuid;
+        util.request(api.CouponConsume, {
+          uuid: uuid
+        }, 'POST').then(res => {
+          if (res.errno === 0) {
+            wx.showToast({
+              title: "消费福利券成功"
+            })
+            //对页面操作完进行马上的刷新
+            that.data.couponList.splice(index, 1)
+            that.setData({
+              couponList: that.data.couponList
+            });
+          }
+          else {
+            util.showErrorToast(res.errmsg);
+          }
+        })
+      }
+    })
+  },
   nextPage: function(event) {
     var that = this;
     if (this.data.page > that.data.count / that.data.limit) {
@@ -177,5 +216,12 @@ Page({
     wx.navigateTo({
       url: '/pages/ucenter/couponArea/couponArea',
     })
+  },
+  help: function(){
+    wx.showModal({
+      title: '',
+      confirmColor: '#b4282d',
+      content: '直接出示给商家看,然后点击使用即可',
+  })
   }
 })
