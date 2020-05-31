@@ -32,4 +32,7 @@ module.exports = {
 
   CollectList: WxApiRoot + 'collect/list', //收藏列表
   CollectAddOrDelete: WxApiRoot + 'collect/addordelete', //添加或取消收藏
+
+  FootprintList: WxApiRoot + 'footprint/list', //足迹列表
+  FootprintDelete: WxApiRoot + 'footprint/delete', //删除足迹
 };

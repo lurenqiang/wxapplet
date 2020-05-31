@@ -141,7 +141,7 @@ Page({
         }
       })
     } else {
-      console.log("鸡");
+      //点击查看详情页面
       wx.navigateTo({
         url: '/pages/goods/goods?id=' + valueId,
       });

@@ -10,7 +10,8 @@
       <image class="img" src="{{item.picUrl}}"></image>
       <view class="info">
         <view class="name">{{item.name}}</view>
-        <view class="subtitle">{{item.brief}}</view>
+        <view class="author">{{item.author}}</view>
+        <view class="publishTime">{{item.publishTime}}</view>
         <!-- <view class="price">{{item.retailPrice}}</view> -->
       </view>
     </view>

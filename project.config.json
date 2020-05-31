@@ -110,6 +110,13 @@
 					"id": -1,
 					"name": "pages/ucenter/collect/collect",
 					"pathName": "pages/ucenter/collect/collect",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/ucenter/footprint/footprint",
+					"pathName": "pages/ucenter/footprint/footprint",
 					"scene": null
 				}
 			]

@@ -80,15 +80,21 @@ page {
   line-height: 40rpx;
 }
 
-.item .info .subtitle {
+.item .info .author {
   width: 480rpx;
   margin-top: 8rpx;
   font-size: 24rpx;
   color: #888;
   line-height: 40rpx;
 }
-
-.item .info .cancel_module{
+.item .info .publishTime {
+  width: 480rpx;
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #888;
+  line-height: 40rpx;
+}
+/* .item .info .cancel_module{
   position: absolute;
   float: right;
   right: 0rpx;
@@ -102,11 +108,6 @@ page {
   float: right;
   height: 60rpx;
   width: 60rpx;
-}
-.item .info .price {
-  margin-top: 8rpx;
-  font-size: 28rpx;
-  color: #333;
-  line-height: 40rpx;
-}
+} */
+
 
