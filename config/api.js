@@ -16,6 +16,9 @@ module.exports = {
   AuthReset: WxApiRoot + 'auth/reset', //账号密码重置
   AuthRegisterCaptcha: WxApiRoot + 'auth/regCaptcha', //验证码
   AuthBindPhone: WxApiRoot + 'auth/bindPhone', //绑定微信手机号
+  AuthUpdateDetail: WxApiRoot+'auth/profile',//更新个人信息
+  AuthGetInfo: WxApiRoot+'auth/getinfo',//更新个人信息
+
   
   UserIndex: WxApiRoot + 'user/index', //个人页面用户相关信息
   IssueList: WxApiRoot + 'issue/list', //帮助信息

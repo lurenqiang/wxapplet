@@ -19,8 +19,7 @@ page {
   align-items: center;
   padding: 30rpx;
   font-size: 28rpx;
-  width: 100%;
-  
+  width: 100%; 
 }
 
 .profile-info .avatar {

@@ -133,7 +133,6 @@ Page({
       title: '提交中...',
       mask: true,
       success: function() {
-
       }
     });
 

@@ -163,7 +163,6 @@ Page({
     that.setData({
       touchStart: e.timeStamp
     })
-    console.log(e.timeStamp + '- touchStart')
   },
   //按下事件结束  
   touchEnd: function(e) {
@@ -171,6 +170,5 @@ Page({
     that.setData({
       touchEnd: e.timeStamp
     })
-    console.log(e.timeStamp + '- touchEnd')
   }
 })

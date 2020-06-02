@@ -1,0 +1,5 @@
+/* pages/ucenter/personalInfomation/updateInfo/updateInfo.wxss */
+.weui-img{
+  height:90rpx;
+  width:90rpx
+}

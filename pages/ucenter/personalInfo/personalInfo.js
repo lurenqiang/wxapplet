@@ -1,4 +1,9 @@
 // pages/ucenter/personalInfo/personalInfo.js
+var api = require('../../../config/api.js');
+var util = require('../../../utils/util.js');
+var user = require('../../../utils/user.js');
+
+var app = getApp();
 Page({
 
   /**
@@ -26,7 +31,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    //获取用户的登录信息
+    if (app.globalData.hasLogin) {
+      let userInfo = wx.getStorageSync('userInfo');
+      this.setData({
+        userInfo: userInfo,
+        hasLogin: true
+      });
+    }  
   },
 
   /**
@@ -62,5 +74,18 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  improvePersonInfo: function() {
+    wx.navigateTo({
+      url: "/pages/ucenter/personalInfomation/updateInfo/updateInfo"
+    });
+  },
+
+  resetPassword: function() {
+    wx.navigateTo({
+      url: "/pages/ucenter/personalInfomation/reset/reset"
+    });
   }
+
 })

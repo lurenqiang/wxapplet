@@ -117,6 +117,13 @@
 					"id": -1,
 					"name": "pages/ucenter/footprint/footprint",
 					"pathName": "pages/ucenter/footprint/footprint",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/ucenter/personalInfo/personalInfo",
+					"pathName": "pages/ucenter/personalInfo/personalInfo",
 					"scene": null
 				}
 			]

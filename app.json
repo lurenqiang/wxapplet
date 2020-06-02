@@ -3,7 +3,7 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/service/service",
-    "pages/party/party",
+    "pages/forum/index/index",
     "pages/auth/login/login",
     "pages/auth/accountLogin/accountLogin",
     "pages/auth/register/register",
@@ -16,7 +16,9 @@
     "pages/ucenter/collect/collect",
     "pages/ucenter/myLifeService/myLifeService",
     "pages/ucenter/couponList/couponList",
-    "pages/ucenter/couponArea/couponArea"
+    "pages/ucenter/couponArea/couponArea",
+    "pages/ucenter/personalInfomation/updateInfo/updateInfo",
+    "pages/ucenter/personalInfomation/reset/reset"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -38,10 +40,10 @@
     "selectedIconPath": "images/selectedservice.png"
   },
   {
-    "pagePath": "pages/party/party",
-    "text": "党政",
-    "iconPath": "images/party.png",
-    "selectedIconPath": "images/selectedparty.png"
+    "pagePath": "pages/forum/index/index",
+    "text": "论坛",
+    "iconPath": "images/forum.png",
+    "selectedIconPath": "images/forumselected.png"
   },
   {
     "pagePath": "pages/ucenter/index/index",

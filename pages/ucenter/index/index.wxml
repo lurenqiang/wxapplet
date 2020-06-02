@@ -1,9 +1,9 @@
 <!--pages/ucenter/index/index.wxml-->
 <view class="container">
   <view class="profile-info" bindtap="goLogin">
-    <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+    <image class="avatar" src="{{userInfo.appletAvatar}}"></image>
     <view class="info">
-      <text class="name">{{userInfo.nickName}}</text>
+      <text class="name">{{userInfo.nickname}}</text>
     </view>
   </view>
 

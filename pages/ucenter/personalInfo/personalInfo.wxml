@@ -1,2 +1,16 @@
 <!--pages/ucenter/personalInfo/personalInfo.wxml-->
-<text>pages/ucenter/personalInfo/personalInfo.wxml</text>
+<view class="container1">
+  <view class="profile-info">
+    <image class="avatar" src="{{userInfo.appletAvatar}}"></image>
+    <view class="info">
+      <text class="name">{{userInfo.nickname}}</text>
+    </view>
+  </view>
+
+  <view class='separate'>
+  </view>
+  <view class="personalinfo-box">
+    <button type="primary" class="improve-personinfo-btn" bindtap="improvePersonInfo">完善修改个人信息</button>
+    <button type="primary" class="reset-personinfo-btn" bindtap="resetPassword">重置密码电话</button>
+  </view>
+</view>

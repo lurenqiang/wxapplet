@@ -10,8 +10,8 @@ Page({
    */
   data: {
     userInfo: {
-      nickName: '点击登录',
-      avatarUrl: '/images/my.png'
+      nickname: '点击登录',
+      appletAvatar: '/images/my.png'
     },
     order: {
       unpaid: 0,
@@ -267,7 +267,7 @@ if (app.globalData.hasLogin) {
         wx.removeStorageSync('token');
         wx.removeStorageSync('userInfo');
         wx.reLaunch({
-          url: '/pages/index/index'
+          url: '/pages/ucenter/index/index'
         });
       }
     })
