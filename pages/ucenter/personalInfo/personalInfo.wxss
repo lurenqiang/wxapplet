@@ -69,7 +69,7 @@
   letter-spacing: 3rpx;
 }
 
-.reset-personinfo-btn {
+.reset-password-btn {
   width: 90%;
   margin: 0 auto;
   color: #fff;
@@ -94,4 +94,31 @@
   border-bottom-right-radius: 50rpx;
   letter-spacing: 3rpx;
   background-image: linear-gradient(to right, #0ca06f 0%, #cadf0c 100%);
+}
+
+.reset-phone-btn {
+  width: 90%;
+  margin: 60rpx 0 40rpx 0;
+  color: #fff;
+  font-size: 30rpx;
+  height: 96rpx;
+  line-height: 96rpx;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: flex;
+  bottom: 0;
+  left: 0;
+  border-radius: 0;
+  padding: 0;
+  margin-left: 5%;
+  text-align: center;
+  /* padding-left: -5rpx; */
+  border-top-left-radius: 50rpx;
+  border-bottom-left-radius: 50rpx;
+  border-top-right-radius: 50rpx;
+  border-bottom-right-radius: 50rpx;
+  letter-spacing: 3rpx;
+  background-image: linear-gradient(to right, #cadf0c 0%, #eec40a 100%);
 }

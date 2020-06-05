@@ -11,6 +11,7 @@
   </view>
   <view class="personalinfo-box">
     <button type="primary" class="improve-personinfo-btn" bindtap="improvePersonInfo">完善修改个人信息</button>
-    <button type="primary" class="reset-personinfo-btn" bindtap="resetPassword">重置密码电话</button>
+    <button type="primary" class="reset-password-btn" bindtap="resetPassword">重置密码</button>
+    <button type="primary" class="reset-phone-btn" bindtap="resetPhone">重置电话</button>
   </view>
 </view>

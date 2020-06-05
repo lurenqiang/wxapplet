@@ -2,7 +2,7 @@
 // 本机开发时使用
 //var WxApiRoot = 'http://localhost:8978/wx/';
 // 局域网测试使用
-var WxApiRoot = 'http://192.168.0.109:8978/wx/';
+var WxApiRoot = 'http://192.168.0.107:8978/wx/';
 
 
 module.exports = {
@@ -14,6 +14,7 @@ module.exports = {
   AuthLogout: WxApiRoot + 'auth/logout', //账号登出
   AuthRegister: WxApiRoot + 'auth/register', //账号注册
   AuthReset: WxApiRoot + 'auth/reset', //账号密码重置
+  AuthResetPhone: WxApiRoot + 'auth/resetPhone', //账号密码重置
   AuthRegisterCaptcha: WxApiRoot + 'auth/regCaptcha', //验证码
   AuthBindPhone: WxApiRoot + 'auth/bindPhone', //绑定微信手机号
   AuthUpdateDetail: WxApiRoot+'auth/profile',//更新个人信息
@@ -38,4 +39,9 @@ module.exports = {
 
   FootprintList: WxApiRoot + 'footprint/list', //足迹列表
   FootprintDelete: WxApiRoot + 'footprint/delete', //删除足迹
+
+  ArticleList:WxApiRoot + 'forum/articleList', //文章列表
+  CountOperation:WxApiRoot + 'forum/countOperation',//文章的点赞或者收藏的数量的改变
+
+  StarAddOrDelete:WxApiRoot + 'star/addordelete', //添加或取消点赞
 };

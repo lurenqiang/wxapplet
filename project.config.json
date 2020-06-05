@@ -124,6 +124,13 @@
 					"id": -1,
 					"name": "pages/ucenter/personalInfo/personalInfo",
 					"pathName": "pages/ucenter/personalInfo/personalInfo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/forum/index/index",
+					"pathName": "pages/forum/index/index",
 					"scene": null
 				}
 			]

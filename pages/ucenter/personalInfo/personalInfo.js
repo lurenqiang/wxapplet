@@ -84,7 +84,12 @@ Page({
 
   resetPassword: function() {
     wx.navigateTo({
-      url: "/pages/ucenter/personalInfomation/reset/reset"
+      url: "/pages/auth/reset/reset"
+    });
+  },
+  resetPhone: function() {
+    wx.navigateTo({
+      url: "/pages/ucenter/personalInfomation/resetPhone/resetPhone"
     });
   }
 

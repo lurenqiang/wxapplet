@@ -1,4 +1,4 @@
-// pages/ucenter/personalInfomation/reset/reset.js
+// pages/service/index/index.js
 Page({
 
   /**

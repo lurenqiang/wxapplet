@@ -1,4 +1,5 @@
-/* pages/auth/reset/reset.wxss */
+/* pages/ucenter/personalInfomation/resetPhone/resetPhone.wxss */
+
 .form-box {
   width: 80%;
   height: auto;
@@ -15,7 +16,7 @@
   border-bottom: 1px solid #d9d9d9;
 }
 
-.form-item .mobile, .form-item .password, .form-item .code {
+.form-item .mobile {
   position: absolute;
   top: 26rpx;
   left: 0;
@@ -57,7 +58,7 @@
   background: #fff;
 }
 
-.reset-btn {
+.resetphone-btn {
   /* margin: 60rpx 0 40rpx 0;
   height: 96rpx;
   line-height: 96rpx;
@@ -75,4 +76,3 @@
   border-radius: 16rpx;
   background-color: lawngreen;
 }
-

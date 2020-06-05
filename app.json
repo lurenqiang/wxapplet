@@ -2,7 +2,7 @@
   "pages":[
     "pages/index/index",
     "pages/logs/logs",
-    "pages/service/service",
+    "pages/service/index/index",
     "pages/forum/index/index",
     "pages/auth/login/login",
     "pages/auth/accountLogin/accountLogin",
@@ -18,7 +18,7 @@
     "pages/ucenter/couponList/couponList",
     "pages/ucenter/couponArea/couponArea",
     "pages/ucenter/personalInfomation/updateInfo/updateInfo",
-    "pages/ucenter/personalInfomation/reset/reset"
+    "pages/ucenter/personalInfomation/resetPhone/resetPhone"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -34,7 +34,7 @@
     "selectedIconPath": "images/selectedindex.png"
   },
   {
-    "pagePath": "pages/service/service",
+    "pagePath": "pages/service/index/index",
     "text": "服务",
     "iconPath": "images/service.png",
     "selectedIconPath": "images/selectedservice.png"

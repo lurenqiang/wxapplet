@@ -78,7 +78,6 @@ function checkLogin() {
     if (wx.getStorageSync('userInfo') && wx.getStorageSync('token')) {
       checkSession().then(() => {
         resolve(true);
-        console.log(wx.getStorageSync('userInfo').nickName,"token还有效");
       }).catch(() => {
         reject(false);
       });

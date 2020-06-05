@@ -1,2 +1,41 @@
 <!--pages/forum/index/index.wxml-->
-<text>pages/forum/index/index.wxml</text>
+<view class="container">
+
+  <view class="no-article" wx:if="{{articleList.length <= 0}}">
+    <view class="c">
+      <text>还没有人发帖</text>
+    </view>
+  </view>
+  <view class="article-list" wx:else>
+    <view class="item" bindtap="openDetail" wx:for="{{articleList}}" wx:key="uuid" data-index="{{index}}">
+      <image class="img" src="{{item.userAvatar}}"></image>
+      <view class="info">
+        <view class="title">{{item.title}}</view>
+        <view class="bottomInfo">
+        <view class="author" style="flex:1">{{item.userName}}</view>
+        <view class="publishTime" style="flex:1">{{item.createTime}}</view>
+        </view>
+        <view class="bottom-Info">
+        <view class="info-item" catchtap="onCollectionTap" data-index="{{index}}">
+        <image class="img" wx:if="{{item.hasCollected}}" src="/images/collectedarticle.png" ></image>
+        <image class="img" wx:else src="/images/collectarticle.png"></image>
+        <text>{{item.collectNumber}}</text>
+        </view>
+        <view class="info-item" catchtap="onStarTap" data-index="{{index}}">
+        <image class="img" wx:if="{{item.hasStar}}" src="/images/zanselected.png" ></image>
+        <image class="img" wx:else src="/images/zan.png"></image>
+        <text>{{item.starsNumber}}</text>
+        </view>
+        <view class="info-item" >
+        <image class="img" wx:if="{{item.hasCommented}}" src="/images/selectedcomment.png" ></image>
+        <image class="img" wx:else src="/images/selectcomment.png"></image>
+        <text>{{item.commentNumber}}</text>
+        </view>
+        
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>
+
