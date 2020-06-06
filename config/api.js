@@ -41,6 +41,7 @@ module.exports = {
   FootprintDelete: WxApiRoot + 'footprint/delete', //删除足迹
 
   ArticleList:WxApiRoot + 'forum/articleList', //文章列表
+  PublishArticle:WxApiRoot + 'forum/publishArticle', //发帖
   CountOperation:WxApiRoot + 'forum/countOperation',//文章的点赞或者收藏的数量的改变
 
   StarAddOrDelete:WxApiRoot + 'star/addordelete', //添加或取消点赞

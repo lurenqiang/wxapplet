@@ -125,3 +125,17 @@ page {
   width:26rpx;
   height:26rpx
 }
+
+.containerbottom{
+  position:fixed;
+  bottom:0;
+  display:flex;
+  width:100%;
+  justify-content:center;
+  
+}
+
+.containerbottom .publish{
+  width: 60rpx;
+  height: 60rpx;
+}

@@ -1,0 +1,29 @@
+<!--pages/forum/publishArticle/publishArticle.wxml-->
+
+<view class="container">
+标题
+  <view class="fb-type">
+    <view class="title">
+      <input class="titleInput" placeholder="最好十五个字以内!" bindinput="bindtitleInput" value="{{title}}"/>
+    </view>   
+  </view>    
+   内容
+  <view class="fb-body">
+ 
+    <textarea class="content" bindinput="contentInput" maxlength="500" auto-focus="true" value="{{content}}" />
+    <view class="weui-uploader__files" id="uploaderFiles">
+      <block wx:for="{{files}}" wx:key="*this">
+        <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+          <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+        </view>
+      </block>
+      <view class="weui-uploader__input-box" wx:if="{{ files.length < 5 }}">
+        <view class="weui-uploader__input" bindtap="chooseImage"></view>
+      </view>
+    </view>
+    <view class="text-count">{{contentLength}}/500</view>
+  </view>
+
+  <view class="fb-btn" bindtap="submitFeedback">发帖</view>
+</view>
+

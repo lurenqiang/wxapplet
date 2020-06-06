@@ -131,6 +131,13 @@
 					"id": -1,
 					"name": "pages/forum/index/index",
 					"pathName": "pages/forum/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/forum/publishArticle/publishArticle",
+					"pathName": "pages/forum/publishArticle/publishArticle",
 					"scene": null
 				}
 			]

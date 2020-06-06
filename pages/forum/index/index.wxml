@@ -36,6 +36,9 @@
       </view>
     </view>
   </view>
+  <view class="containerbottom" style="bottom">
+  <image class="publish" catchtap="pubishArticle" src="/images/publishArticle.png"></image>
+  </view>
 
 </view>
 

@@ -18,7 +18,8 @@
     "pages/ucenter/couponList/couponList",
     "pages/ucenter/couponArea/couponArea",
     "pages/ucenter/personalInfomation/updateInfo/updateInfo",
-    "pages/ucenter/personalInfomation/resetPhone/resetPhone"
+    "pages/ucenter/personalInfomation/resetPhone/resetPhone",
+    "pages/forum/publishArticle/publishArticle"
   ],
   "window":{
     "backgroundTextStyle":"light",

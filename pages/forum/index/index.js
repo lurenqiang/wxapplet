@@ -18,7 +18,8 @@ Page({
     hasCommented:false,
     collectNumber:0,
     starsNumber:0,
-    commentNumber:0 
+    commentNumber:0,
+    hasonShow:false
   },
 
   getArticleList() {
@@ -157,13 +158,23 @@ Page({
       });
   },
 
-
-
+  pubishArticle:function(){
+    if (app.globalData.hasLogin) {
+      wx.navigateTo({
+        url: "/pages/forum/publishArticle/publishArticle"
+      });
+    } else {
+      wx.navigateTo({
+        url: "/pages/auth/login/login"
+      });
+    };
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.getArticleList();
+    console.log("onload显示-----");
   },
 
   /**
@@ -177,7 +188,24 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let that = this;
+      //解决只显示一次onShow的问题,避免重复加载
+      if(!that.hasonShow){
+        that.hasonShow = true;
+        return
+      }
+    console.log("onshow显示-----");
+    util.request(api.ArticleList, {
+      page: that.data.page,
+      limit: that.data.limit
+    }).then(function(res) {
+      if (res.errno === 0) {
+        that.setData({
+          articleList: res.data.list,
+          totalPages: res.data.pages,
+        });
+      }
+    });
   },
 
   /**
