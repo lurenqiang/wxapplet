@@ -62,6 +62,7 @@ Page({
       _this.setData({
         appletAvatar: tempFilePath
       })
+      
       _this.upload(res);     
     }
   })

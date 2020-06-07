@@ -19,7 +19,8 @@
     "pages/ucenter/couponArea/couponArea",
     "pages/ucenter/personalInfomation/updateInfo/updateInfo",
     "pages/ucenter/personalInfomation/resetPhone/resetPhone",
-    "pages/forum/publishArticle/publishArticle"
+    "pages/forum/publishArticle/publishArticle",
+    "pages/forum/articleDetail/articleDetail"
   ],
   "window":{
     "backgroundTextStyle":"light",

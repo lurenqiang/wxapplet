@@ -15,7 +15,8 @@ Page({
     contentLength: 0,
     hasPicture: false,
     picUrls: [],
-    files: []
+    files: [],
+    accessToken:""
   },
   chooseImage: function(e) {
     if (this.data.files.length >= 5) {
@@ -32,10 +33,25 @@ Page({
         that.setData({
           files: that.data.files.concat(res.tempFilePaths)
         });
-        that.upload(res);
+        wx.uploadFile({
+          url: api.CheckImage,
+          filePath: res.tempFilePaths[0],
+          name: 'file',
+          //accessToken:that.data.accessToken,
+          success: function(_res) {
+            var _res = JSON.parse(_res.data);
+            if (_res.errno === 0) {
+              that.upload(res);
+            }
+          },
+          fail: function(e) {
+            util.showErrorToast(_res.errmsg);
+          },
+         })
       }
     })
   },
+
   upload: function(res) {
     var that = this;
     const uploadTask = wx.uploadFile({
@@ -83,9 +99,9 @@ Page({
     });
   },
   bindtitleInput:function(e){
-  this.setData({
-    title:e.detail.value,
-  })
+    this.setData({
+      title:e.detail.value,
+    })
   },
   submitFeedback: function(e) {
 
@@ -94,12 +110,37 @@ Page({
       util.showErrorToast('请输入标题');
       return false;
     }
-
+    util.request(api.CheckContent, {
+      accessToken:that.data.accessToken,
+      content:that.data.title,
+    }, 'POST').then(function(res_) {
+      if (res_.errno === 0) {  
+      } else {
+        util.showErrorToast(res_.errmsg);
+        this.setData({
+          title: '',
+        });
+        return false;
+      }  
+    });
     if (that.data.content == '') {
       util.showErrorToast('请输入内容');
       return false;
     }
-
+    util.request(api.CheckContent, {
+      accessToken:that.data.accessToken,
+      content:that.data.content,
+    }, 'POST').then(function(res_) {
+      if (res_.errno === 0) {  
+      } else {
+        util.showErrorToast(res_.errmsg);
+        this.setData({
+          contentLength: 0,
+          content: '',
+        });
+        return false;
+      }  
+    });
     wx.showLoading({
       title: '提交中...',
       mask: true,
@@ -158,9 +199,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+      this.getAccessToken();
   },
-
+//获得accesstoken
+  getAccessToken:function(e){
+    let that = this;
+    util.request(api.AuthGetAccessToken,{},'GET').then(function(res) {
+      if (res.errno === 0) {
+        var accessToken = res.data.accessToken;
+        that.setData({
+          accessToken:accessToken,
+        });
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

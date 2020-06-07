@@ -19,7 +19,7 @@ module.exports = {
   AuthBindPhone: WxApiRoot + 'auth/bindPhone', //绑定微信手机号
   AuthUpdateDetail: WxApiRoot+'auth/profile',//更新个人信息
   AuthGetInfo: WxApiRoot+'auth/getinfo',//更新个人信息
-
+  AuthGetAccessToken: WxApiRoot+'auth/getAccessToken',//得到个人accessToken
   
   UserIndex: WxApiRoot + 'user/index', //个人页面用户相关信息
   IssueList: WxApiRoot + 'issue/list', //帮助信息
@@ -43,6 +43,8 @@ module.exports = {
   ArticleList:WxApiRoot + 'forum/articleList', //文章列表
   PublishArticle:WxApiRoot + 'forum/publishArticle', //发帖
   CountOperation:WxApiRoot + 'forum/countOperation',//文章的点赞或者收藏的数量的改变
+  CheckImage:WxApiRoot + 'forum/checkImage',//监察发帖的图片是否包含非法信息
+  CheckContent:WxApiRoot + 'forum/checkContent',//监察发帖的内容是否包含非法信息
 
   StarAddOrDelete:WxApiRoot + 'star/addordelete', //添加或取消点赞
 };

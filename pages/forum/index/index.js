@@ -259,7 +259,7 @@ Page({
     let uuid = this.data.articleList[index].uuid;
     //点击查看详情页面
     wx.navigateTo({
-      url: '/pages/forum/article/articleDetail?uuid=' + uuid,
+      url: '/pages/forum/articleDetail/articleDetail?uuid=' + uuid,
     });
   }
 })
