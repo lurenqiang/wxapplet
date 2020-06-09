@@ -41,6 +41,11 @@ module.exports = {
   FootprintDelete: WxApiRoot + 'footprint/delete', //删除足迹
 
   ArticleList:WxApiRoot + 'forum/articleList', //文章列表
+  ArticleDetail:WxApiRoot + 'forum/articleDetail', //帖子详细信息
+  
+  CommentList:WxApiRoot + 'comment/articleDetailComment', //帖子回复的相关信息
+  AddComment:WxApiRoot + 'comment/addComment', //添加回复的相关信息
+
   PublishArticle:WxApiRoot + 'forum/publishArticle', //发帖
   CountOperation:WxApiRoot + 'forum/countOperation',//文章的点赞或者收藏的数量的改变
   CheckImage:WxApiRoot + 'forum/checkImage',//监察发帖的图片是否包含非法信息

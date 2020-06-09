@@ -1,2 +1,56 @@
 <!--pages/forum/articleDetail/articleDetail.wxml-->
+<view class="container">
+
+  <view class="no-comment" wx:if="{{commentList.length <= 0}}">
+    <view class="c">
+      <text>没有人评论了</text>
+    </view>
+  </view>
+  <view class="article-detail">
+    <view class="left-info">
+       <image class="img" src="{{wxArticle.userAvatar}}"></image>
+       <view class="userName">{{wxArticle.userName}}</view>
+       <view class="createTime">{{wxArticle.createTime}}</view>
+    </view>
+    <view class="right-info">
+      <view class="title">{{wxArticle.title}}
+      </view>
+      <view class="content">
+      {{wxArticle.content}}
+      </view>
+      <view class="pic" wx:if="{{wxArticle.hasPicture}}">
+        <image class="img" wx:for="{{wxArticle.picUrls}}" wx:key="*this" wx:for-item="pitem" src="{{pitem}}"></image>
+      </view>
+    </view>
+    <view class='separate'></view>
+  </view>
+  <view class="comment-list" wx:if="{{CommentList.length>1}}">
+    <view class="item"  wx:for="{{CommentList}}" wx:key="uuid" data-index="{{index}}">
+      <view class="one-level-Comment">
+        <view class="left-comment">
+          <image class="avatar" src="{{item.userAvatar}}"></image>
+          <view class="userName">{{item.userName}}</view>
+        </view>
+        <view class="right-comment">
+          <view class="comment-content">{{item.articleComment}}</view>
+          <view class="reply-now" style="right" catchtap="bindReplyNow" data-index="{{index}}">回复</view>
+        </view>     
+      </view>
+      <view class="reply-comment-list" wx:if="{{item.replyCommentList.length>0}}">
+        <view class="reply-comment" wx:for="{{item.replyCommentList}}" wx:key="uuid" wx:for-item="ritem" src="{{index}}" >
+          <view class="reply-comment-info">
+            <view class="reply-user">{{ritem.userName}}</view>回复
+            <view class="reply-to">{{ritem.replyPersonName}}</view>:
+            <view class="reply-comment">{{ritem.replyComment}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="reply-comment-bottom">
+  <input class="reply" placeholder="评论{{theone}}" bindinput="bindCommentInput" style="bottom"></input>
+  <button class="fb-btn" bindtap="submitComment">评论</button> 
+  </view>
+</view>
+
 

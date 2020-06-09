@@ -1,1 +1,227 @@
 /* pages/forum/articleDetail/articleDetail.wxss */
+page {
+  background: #f4f4f4;
+  min-height: 100%;
+}
+
+.container {
+  background: #f4f4f4;
+  min-height: 100%;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+.no-comment {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.no-comment .c {
+  width: 100%;
+  height: auto;
+  margin-top: 400rpx;
+}
+
+
+.no-comment .c text {
+  margin: 0 auto;
+  display: block;
+  width: 258rpx;
+  height: 29rpx;
+  line-height: 29rpx;
+  text-align: center;
+  font-size: 29rpx;
+  color: #999;
+}
+
+.article-detail{
+  width: 100%;
+  background: #fff;
+  min-height:250rpx ;
+  height: auto;
+  overflow: hidden;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.article-detail .left-info{
+  float: left;
+  display: flex;
+  flex-direction: column;
+  width: 150rpx;
+  height: 200rpx;
+  justify-content: center;
+  align-items: center;
+}
+
+.article-detail .left-info .img{
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.article-detail .left-info .userName{
+  width: 150rpx;
+  height: 25rpx;
+  font-size: 20rpx;
+}
+
+.article-detail .left-info .createTime{
+  justify-content: left;
+  width: 150rpx;
+  height: 25rpx;
+  font-size: 16rpx;
+}
+
+.article-detail .right-info{
+  position: relative;
+  float: right;
+  width: 540rpx;
+  min-height: 200rpx;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding-left: 20rpx;
+}
+
+.article-detail .right-info .title{
+  width: 540rpx;
+  flex-wrap: wrap;
+  font-size: 40rpx;
+  padding-bottom: 20rpx;
+}
+
+.article-detail .right-info .content{
+  width: 540rpx;
+  flex-wrap: wrap;
+  font-size: 26rpx;
+  padding-bottom: 20rpx;
+}
+
+.article-detail .right-info .pic{
+  width: 540rpx;
+  height: auto;
+}
+
+.article-detail .right-info .pic .img{
+  width: 540rpx;
+  height: 540rpx;
+}
+
+
+.comment-list{
+  width: 100%;
+  background: #fff;
+  padding: 30rpx 30rpx 30rpx 0;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.comment-list .item{
+  width: 100%;
+  overflow: hidden;
+  height: auto;
+  padding-bottom: 30rpx;
+}
+
+.comment-list .item .one-level-Comment{
+  width: 100%;
+}
+
+.comment-list .item .one-level-Comment .left-comment{
+  float: left;
+  width: 150rpx;
+  height: 150rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comment-list .item .one-level-Comment .left-comment .avatar{
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.comment-list .item .one-level-Comment .left-comment .userName{
+  width:100rpx;
+  height:40rpx;
+  font-size: 26rpx;
+}
+
+.comment-list .item .one-level-Comment .right-comment{
+  float: right;
+  width: 540rpx;
+  min-height: 150rpx;
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+}
+
+.comment-list .item .one-level-Comment .right-comment .comment-content{
+  width: 400rpx;
+  font-size: 30rpx;
+  flex-wrap: wrap;
+}
+
+.comment-list .item .one-level-Comment .right-comment reply-now{
+  width: 50rpx;
+  font-size: 30rpx;
+  padding-left: 40rpx;
+  justify-content: right;
+}
+.comment-list .item .reply-comment-list{
+  width: 700rpx;
+  padding-left: 150rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-list .item .reply-comment-list .reply-comment{ 
+  width: 550rpx;
+}
+
+.comment-list .item .reply-comment-list .reply-comment .reply-comment-info{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.comment-list .item .reply-comment-list .reply-comment .reply-comment-info .reply-user{
+  height: 30rpx;
+  font-size: 24rpx;
+}
+
+
+.comment-list .item .reply-comment-list .reply-comment .reply-comment-info .reply-to{
+  height: 30rpx;
+  font-size: 24rpx;
+}
+
+.comment-list .item .reply-comment-list .reply-comment .reply-comment-info .reply-comment{
+  height: 30rpx;
+  font-size: 24rpx;
+}
+
+.reply-comment-bottom{
+  width: 100%;
+  height:60rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.reply-comment-bottom  .reply{
+  width: 80%;
+  height: 60rpx;
+}
+
+.reply-comment-bottom  .fb-bt{
+  width: 20%;
+  height: 60rpx;
+  text-align: center;
+  background-color: forestgreen;
+  color: #f4f4f4;
+  background-image: linear-gradient(to right, rgb(94, 175, 61) 0%, #1cc516 100%);
+}
+
+
