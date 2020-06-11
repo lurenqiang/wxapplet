@@ -39,12 +39,15 @@ module.exports = {
 
   FootprintList: WxApiRoot + 'footprint/list', //足迹列表
   FootprintDelete: WxApiRoot + 'footprint/delete', //删除足迹
+  FootprintAdd: WxApiRoot + 'footprint/add', //新增足迹
 
   ArticleList:WxApiRoot + 'forum/articleList', //文章列表
   ArticleDetail:WxApiRoot + 'forum/articleDetail', //帖子详细信息
   
   CommentList:WxApiRoot + 'comment/articleDetailComment', //帖子回复的相关信息
   AddComment:WxApiRoot + 'comment/addComment', //添加回复的相关信息
+  CommentDelete:WxApiRoot + 'comment/deleteComment', //删除回复
+  CountOperationInComment:WxApiRoot + 'comment/countOperation', //评论回复数量的改变
 
   PublishArticle:WxApiRoot + 'forum/publishArticle', //发帖
   CountOperation:WxApiRoot + 'forum/countOperation',//文章的点赞或者收藏的数量的改变

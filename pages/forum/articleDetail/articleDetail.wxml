@@ -1,6 +1,5 @@
 <!--pages/forum/articleDetail/articleDetail.wxml-->
 <view class="container">
-
   <view class="no-comment" wx:if="{{commentList.length <= 0}}">
     <view class="c">
       <text>没有人评论了</text>
@@ -32,12 +31,23 @@
           <view class="userName">{{item.userName}}</view>
         </view>
         <view class="right-comment">
-          <view class="comment-content">{{item.articleComment}}</view>
-          <view class="reply-now" style="right" catchtap="bindReplyNow" data-index="{{index}}">回复</view>
+          <view class="comment-content" bindtap="bindReplyNow" bindtouchstart="touchStart" bindtouchend="touchEnd" data-index="{{index}}">{{item.articleComment}}</view>
+            <view class="reply-now" style="right">
+              <view class="info-item" catchtap="onCommentTap" data-index="{{index}}">
+                <image class="img" wx:if="{{item.hasCommented}}" src="/images/selectedcomment.png" ></image>
+                <image class="img" wx:else src="/images/selectcomment.png"></image>
+                <text>{{item.commentNumber}}</text>
+              </view>
+              <view class="info-item" catchtap="onStarTap" data-index="{{index}}">
+                <image class="img" wx:if="{{item.hasStar}}" src="/images/zanselected.png" ></image>
+               <image class="img" wx:else src="/images/zan.png"></image>
+                <text>{{item.starsNumber}}</text>
+              </view>
+            </view>
         </view>     
       </view>
       <view class="reply-comment-list" wx:if="{{item.replyCommentList.length>0}}">
-        <view class="reply-comment" wx:for="{{item.replyCommentList}}" wx:key="uuid" wx:for-item="ritem" src="{{index}}" >
+        <view class="reply-comment" bindtap="bindReply1Now" data-index="{{index}}" bindtouchstart="touchStart" bindtouchend="touchEnd" wx:for="{{item.replyCommentList}}" wx:key="uuid" wx:for-item="ritem" wx:for-index="rindex" data-rindex="{{rindex}}">
           <view class="reply-comment-info">
             <view class="reply-user">{{ritem.userName}}</view>回复
             <view class="reply-to">{{ritem.replyPersonName}}</view>:
@@ -48,8 +58,8 @@
     </view>
   </view>
   <view class="reply-comment-bottom">
-  <input class="reply" placeholder="评论{{theone}}" bindinput="bindCommentInput" style="bottom"></input>
-  <button class="fb-btn" bindtap="submitComment">评论</button> 
+    <input class="reply" placeholder="评论{{theone}}" bindinput="bindCommentInput" style="bottom" value="{{commentInput}}"></input>
+    <button class="fb-btn" bindtap="submitComment">评论</button> 
   </view>
 </view>
 

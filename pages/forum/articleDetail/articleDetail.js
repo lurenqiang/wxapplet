@@ -72,16 +72,160 @@ Page({
     });
   },
 
+  onStarTap:function(event){
+    let that = this;
+    let index = event.currentTarget.dataset.index;
+    let uuid = this.data.CommentList[index].uuid;
+    let hasStar=this.data.CommentList[index].hasStar;
+    let starsNumber =this.data.CommentList[index].starsNumber; 
+      //处理点赞
+      if(!hasStar){
+        //如果当前状态是未点赞
+        starsNumber++;
+        hasStar = true;
+      }else{
+        //如果当前状态是已点赞
+        starsNumber--;
+        hasStar = false;
+      }
+      //更新缓存数据库
+      util.request(api.StarAddOrDelete, {
+        //type:1代表是回复评论的
+        type:1,
+        valueId: uuid
+      }, 'POST').then(function(res) {
+        if (res.errno === 0) {
+          that.data.CommentList[index].hasStar=hasStar;
+          that.data.CommentList[index].starsNumber=starsNumber;
+          that.setData({
+            CommentList:that.data.CommentList,
+            hasStar:hasStar,
+            starsNumber:starsNumber
+          });
+        } 
+        util.request(api.CountOperationInComment, {
+          type:'star',
+          uuid: uuid,
+          Number:that.data.starsNumber
+        }, 'POST').then(function(res) {
+          if (res.errno === 0) {
+           if(hasStar){
+            wx.showToast({
+              title: '点赞成功',
+              icon: 'none',
+              duration: 2000
+            });
+           }else{
+            wx.showToast({
+              title: '取消点赞',
+              icon: 'none',
+              duration: 2000
+            });
+           }
+          } 
+        });
+      });
+  },
+  bindReply1Now:function(event){
+    let that = this;
+    let index = event.currentTarget.dataset.index;
+    let rindex = event.currentTarget.dataset.rindex;
+    let name = that.data.CommentList[index].replyCommentList[rindex].userName;
+    let theoneuuid = that.data.CommentList[index].replyCommentList[rindex].userId;
+    let theOneLevelCommentUuid = that.data.CommentList[index].uuid;
+    let userInfo= wx.getStorageSync('userInfo');
+     //触摸时间距离页面打开的毫秒数  
+     var touchTime = that.data.touchEnd - that.data.touchStart;
+     //如果按下时间大于350为长按  
+     if(touchTime > 350 && theoneuuid === userInfo.uuid){
+      wx.showModal({
+        title: '',
+        content: '确定删除评论吗？',
+        success: function(res) {
+          if (res.confirm) {
+            util.request(api.CommentDelete, {
+              uuid: that.data.CommentList[index].replyCommentList[rindex].uuid,
+              articleId:that.data.articleId,
+            }, 'POST').then(function(res) {
+              if (res.errno === 0) {
+                console.log(res.data);
+                wx.showToast({
+                  title: '删除成功',
+                  icon: 'success',
+                  duration: 2000
+                });
+                that.getDataAgain();
+              }
+            });
+          }
+        }
+      })
+     }else{ 
+      that.setData({
+        theone:name,
+        theoneuuid:theoneuuid,
+        theOneLevelCommentUuid:theOneLevelCommentUuid
+      })
+     }
+  },
+
   bindReplyNow:function(event){
     let that = this;
     let index = event.currentTarget.dataset.index;
     let name = that.data.CommentList[index].userName;
     let theoneuuid = that.data.CommentList[index].userId;
     let theOneLevelCommentUuid = that.data.CommentList[index].uuid;
+    let userInfo= wx.getStorageSync('userInfo');
+     //触摸时间距离页面打开的毫秒数  
+     var touchTime = that.data.touchEnd - that.data.touchStart;
+     //如果按下时间大于350为长按  
+     if(touchTime > 350 && theoneuuid === userInfo.uuid){
+      wx.showModal({
+        title: '',
+        content: '确定删除评论吗？',
+        success: function(res) {
+          if (res.confirm) {
+            util.request(api.CommentDelete, {
+              uuid: theOneLevelCommentUuid,
+              articleId:that.data.articleId,
+            }, 'POST').then(function(res) {
+              if (res.errno === 0) {
+                console.log(res.data);
+                wx.showToast({
+                  title: '删除成功',
+                  icon: 'success',
+                  duration: 2000
+                });
+                that.data.CommentList.splice(index, 1)
+                that.setData({
+                  CommentList: that.data.CommentList
+                });
+              }
+            });
+          }
+        }
+      })
+     }else{ 
+      that.setData({
+        theone:name,
+        theoneuuid:theoneuuid,
+        theOneLevelCommentUuid:theOneLevelCommentUuid
+      })
+     }
+  },
+
+  //按下事件开始  
+  touchStart: function(e) {
+    let that = this;
     that.setData({
-      theone:name,
-      theoneuuid:theoneuuid,
-      theOneLevelCommentUuid:theOneLevelCommentUuid
+      touchStart: e.timeStamp
+    })
+  },
+  //按下事件结束  
+  touchEnd: function(e) {
+    let that = this;
+    that.setData({
+      touchEnd: e.timeStamp
     })
   },
 
@@ -96,17 +240,19 @@ Page({
       util.request(api.AddComment, {
         articleId:that.data.articleId,
         commentInput:that.data.commentInput,
-      }, 'POST').then(function(res_) {
-        if (res_.errno === 0) { 
+      }, 'POST').then(function(res) {
+        that.setData({
+          commentInput: '',
+          theone:"",
+        });
+        if (res.errno === 0) { 
+          //重新请求,为了实时刷新数据
+          that.getDataAgain();
           wx.showToast({
             title: '评论成功',
           })
         } else {
-          util.showErrorToast(res_.errmsg);
-          this.setData({
-            commentInput: '',
-            theone:"",
-          });
+          util.showErrorToast(res.errmsg);
           return false;
         }  
       });
@@ -117,23 +263,37 @@ Page({
         theOneLevelCommentUuid:that.data.theOneLevelCommentUuid,
         articleId:that.data.articleId,
         commentInput:that.data.commentInput,
-      }, 'POST').then(function(res_) {
-        if (res_.errno === 0) {  
+      }, 'POST').then(function(res) {
+        that.setData({
+          commentInput: '',
+          theone:""
+        });
+        if (res.errno === 0) {  
+          that.getDataAgain();
           wx.showToast({
             title: '评论成功',
           })
         } else {
-          util.showErrorToast(res_.errmsg);
-          this.setData({
-            commentInput: '',
-            theone:""
-          });
+          util.showErrorToast(res.errmsg);
           return false;
         }  
       });
-  
     }
-   
+  },
+
+  getDataAgain:function(){
+    let that = this;
+    util.request(api.CommentList, {
+      articleId:that.data.articleId,
+      page:1
+    },"POST").then(function(res) {
+      if (res.errno === 0) {
+        that.setData({
+          CommentList:  res.data.list,
+          totalPages: res.data.pages,
+        });
+      }
+    });
   },
 
   bindCommentInput:function(e){
@@ -152,15 +312,34 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (app.globalData.hasLogin) {
     var uuid = options.uuid;
     var that = this;
     that.setData({
       articleId:uuid,
     });
+    //浏览痕迹的添加
     that.getArticleDetail();
     that.getCommentList();
+    that.addFootprint();
+   }
+    else{
+      wx.navigateTo({
+        url: "/pages/auth/login/login"
+      });
+    }
   },
-
+  addFootprint:function(){
+    var that= this;
+    util.request(api.FootprintAdd, {
+      articleId:that.data.articleId,
+    },"POST").then(function(res) {
+      if (res.errno === 0) {
+      }else{
+        console.error("添加足迹失败")
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

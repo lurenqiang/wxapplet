@@ -140,7 +140,7 @@ Page({
     } else {
       //点击查看详情页面
       wx.navigateTo({
-        url: '/pages/goods/goods?id=' + valueId,
+        url: '/pages/forum/articleDetail/articleDetail?uuid=' + uuid,
       });
     }
   },

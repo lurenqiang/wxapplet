@@ -73,7 +73,7 @@ page {
   padding-left: 20rpx;
 }
 
-.item .info .name {
+.item .info .title {
   font-size: 28rpx;
   width: 480rpx;
   color: #333;

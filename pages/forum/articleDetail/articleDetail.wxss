@@ -163,12 +163,30 @@ page {
   flex-wrap: wrap;
 }
 
-.comment-list .item .one-level-Comment .right-comment reply-now{
-  width: 50rpx;
-  font-size: 30rpx;
-  padding-left: 40rpx;
+.comment-list .item .one-level-Comment .right-comment .reply-now{
+  width: 140rpx;
+  display: flex;
+  flex-direction: row;
+  height: 50rpx;
+  /* padding-left: 40rpx; */
   justify-content: right;
 }
+.comment-list .item .one-level-Comment .right-comment .reply-now .info-item{
+  width: 50rpx;
+  height:80rpx;
+  font-size: 20rpx;
+  display: flex;
+  flex-direction: column;
+  margin-right: 8rpx;
+}
+
+.comment-list .item .one-level-Comment .right-comment .reply-now .info-item .img{
+  width:26rpx;
+  height:26rpx
+}
+
+
+
 .comment-list .item .reply-comment-list{
   width: 700rpx;
   padding-left: 150rpx;

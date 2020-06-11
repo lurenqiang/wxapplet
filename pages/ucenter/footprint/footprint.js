@@ -28,7 +28,7 @@ Page({
         let f1 = that.data.footprintList;
         let f2 = res.data.list;
         for (let i = 0; i < f2.length; i++) {
-          f2[i].addDate = f2[i].createTime.substring(0, 10)
+          f2[i].addDate = f2[i].updateTime.substring(0, 10)
           let last = f1.length - 1;
           if (last >= 0 && f1[last][0].addDate === f2[i].addDate) {
             f1[last].push(f2[i]);
@@ -84,7 +84,7 @@ Page({
       });
     } else {
       wx.navigateTo({
-        url: '/pages/goods/goods?id=' + valueId,
+        url: '/pages/forum/articleDetail/articleDetail?uuid=' + uuid,
       });
     }
 
