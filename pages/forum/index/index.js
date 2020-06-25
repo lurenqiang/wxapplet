@@ -44,14 +44,11 @@ Page({
 
   onCollectionTap:function(event){
     let that = this;
-    console.log(that.data.articleList);
     let index = event.currentTarget.dataset.index;
     let uuid = this.data.articleList[index].uuid;
     let hasCollected=this.data.articleList[index].hasCollected;
     let collectNumber =this.data.articleList[index].collectNumber; 
-    console.log(uuid);
-    console.log(hasCollected);
-    console.log(collectNumber)
+    let userId = this.data.articleList[index].userId;
       //处理收藏
       if(!hasCollected){
         //如果当前状态是未收藏
@@ -76,9 +73,6 @@ Page({
             collectNumber:collectNumber
           });
         } 
-        console.log(that.data.articleList);
-        console.log(that.data.hasCollected);
-        console.log(that.data.collectNumber);
         util.request(api.CountOperation, {
           type:'collect',
           uuid: uuid,
@@ -86,12 +80,35 @@ Page({
         }, 'POST').then(function(res) {
           if (res.errno === 0) {
            if(hasCollected){
+              //如果是收藏,则对数据库的notify进行处理 
+                //自己对自己收藏,不做通知
+                let userInfo = wx.getStorageSync('userInfo');
+                if(userInfo.uuid != userId){
+                  util.request(api.AddNormalNotice, {
+                    type:3,
+                    action: 4,
+                    articleId:uuid,
+                    userId:userId
+                  }, 'POST').then(function(res){
+                  })
+                }
             wx.showToast({
               title: '收藏成功',
               icon: 'none',
               duration: 2000
             });
            }else{
+             //如果是收藏,则对数据库的notify进行处理 
+                //自己对自己收藏,不做通知
+              let userInfo = wx.getStorageSync('userInfo');
+              if(userInfo.uuid != userId){
+                util.request(api.DeleteNormalNotice, {
+                  articleId:uuid,
+                  action: 4,
+                  userId:userId
+                }, 'POST').then(function(res){
+                })
+              }
             wx.showToast({
               title: '取消收藏',
               icon: 'none',
@@ -110,6 +127,7 @@ Page({
     let uuid = this.data.articleList[index].uuid;
     let hasStar=this.data.articleList[index].hasStar;
     let starsNumber =this.data.articleList[index].starsNumber; 
+    let userId = this.data.articleList[index].userId;
       //处理点赞
       if(!hasStar){
         //如果当前状态是未点赞
@@ -120,7 +138,7 @@ Page({
         starsNumber--;
         hasStar = false;
       }
-      //更新缓存数据库
+      //更新点赞的数据库
       util.request(api.StarAddOrDelete, {
         type:0,
         valueId: uuid
@@ -141,12 +159,35 @@ Page({
         }, 'POST').then(function(res) {
           if (res.errno === 0) {
            if(hasStar){
+            //如果是点赞,则对数据库的notify进行处理 
+              //自己对自己点赞,不做通知
+              let userInfo = wx.getStorageSync('userInfo');
+              if(userInfo.uuid != userId){
+                util.request(api.AddNormalNotice, {
+                  type:3,
+                  action: 1,
+                  articleId:uuid,
+                  userId:userId
+                }, 'POST').then(function(res){
+                })
+              }
             wx.showToast({
               title: '点赞成功',
               icon: 'none',
               duration: 2000
             });
            }else{
+             //如果是取消点赞,则对数据库的notify进行delete处理 
+              //自己对自己点赞,不做通知
+              let userInfo = wx.getStorageSync('userInfo');
+              if(userInfo.uuid != userId){
+                util.request(api.DeleteNormalNotice, {
+                  articleId:uuid,
+                  action: 1,
+                  userId:userId
+                }, 'POST').then(function(res){
+                })
+              }
             wx.showToast({
               title: '取消点赞',
               icon: 'none',

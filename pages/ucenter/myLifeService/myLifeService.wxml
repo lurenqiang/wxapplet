@@ -1,2 +1,9 @@
 <!--pages/ucenter/myLifeService/myLifeService.wxml-->
-<text>pages/ucenter/myLifeService/myLifeService.wxml</text>
+<view class="container">
+   <view class="more_permission"> 
+    <block wx:for="{{files}}" wx:key="*this">
+      </block>
+      <image class="permisson_img" src="/images/more_permission.png" bindtap="chooseImage"></image>
+   </view>
+   <view class="fb-btn" bindtap="submitPermission">提交</view>
+</view>

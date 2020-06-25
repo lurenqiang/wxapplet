@@ -23,7 +23,7 @@
     </view>
     <view class='separate'></view>
   </view>
-  <view class="comment-list" wx:if="{{CommentList.length>1}}">
+  <view class="comment-list" wx:if="{{CommentList.length>0}}">
     <view class="item"  wx:for="{{CommentList}}" wx:key="uuid" data-index="{{index}}">
       <view class="one-level-Comment">
         <view class="left-comment">

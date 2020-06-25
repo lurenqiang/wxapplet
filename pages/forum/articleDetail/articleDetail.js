@@ -78,6 +78,7 @@ Page({
     let uuid = this.data.CommentList[index].uuid;
     let hasStar=this.data.CommentList[index].hasStar;
     let starsNumber =this.data.CommentList[index].starsNumber; 
+    let userId = this.data.CommentList[index].userId;
       //处理点赞
       if(!hasStar){
         //如果当前状态是未点赞
@@ -110,12 +111,37 @@ Page({
         }, 'POST').then(function(res) {
           if (res.errno === 0) {
            if(hasStar){
+             //如果是点赞,则对数据库的notify进行处理 
+              //自己对自己点赞,不做通知
+              let userInfo = wx.getStorageSync('userInfo');
+              if(userInfo.uuid != userId){
+                util.request(api.AddNormalNotice, {
+                  type:3,
+                  action: 1,
+                  articleId:that.data.articleId,
+                  commentId:uuid,
+                  userId:userId
+                }, 'POST').then(function(res){
+                })
+              }
             wx.showToast({
               title: '点赞成功',
               icon: 'none',
               duration: 2000
             });
            }else{
+             //如果是取消点赞,则对数据库的notify进行delete处理 
+              //自己对自己点赞,不做通知
+              let userInfo = wx.getStorageSync('userInfo');
+              if(userInfo.uuid != userId){
+                util.request(api.DeleteNormalNotice, {
+                  commentId:uuid,
+                  articleId:that.data.articleId,
+                  action: 1,
+                  userId:userId
+                }, 'POST').then(function(res){
+                })
+              }
             wx.showToast({
               title: '取消点赞',
               icon: 'none',
@@ -148,7 +174,18 @@ Page({
               articleId:that.data.articleId,
             }, 'POST').then(function(res) {
               if (res.errno === 0) {
-                console.log(res.data);
+                 //如果是删除评论,则对数据库的notify进行delete处理 
+              //自己对自己删除自己的评论,不做通知
+              if( that.data.CommentList[index].replyCommentList[rindex].replyPersonId!= theoneuuid){
+                util.request(api.DeleteNormalNotice, {
+                  articleId:that.data.articleId,
+                  commentId:theOneLevelCommentUuid,
+                  replyCommentId:that.data.CommentList[index].replyCommentList[rindex].uuid,
+                  action: 3,
+                  userId:theoneuuid
+                }, 'POST').then(function(res){
+                })
+              }
                 wx.showToast({
                   title: '删除成功',
                   icon: 'success',
@@ -190,7 +227,17 @@ Page({
               articleId:that.data.articleId,
             }, 'POST').then(function(res) {
               if (res.errno === 0) {
-                console.log(res.data);
+                 //如果是删除评论,则对数据库的notify进行delete处理 
+              //自己对自己删除自己的评论,不做通知
+              if(userInfo.uuid != that.data.wxArticle.userId){
+                util.request(api.DeleteNormalNotice, {
+                  articleId:that.data.articleId,
+                  commentId:that.data.CommentList[index].uuid,
+                  action: 2,
+                  userId:that.data.wxArticle.userId
+                }, 'POST').then(function(res){
+                })
+              }
                 wx.showToast({
                   title: '删除成功',
                   icon: 'success',
@@ -232,6 +279,8 @@ Page({
   //comment
   submitComment:function(e){
     let that = this;
+    let userId= that.data.wxArticle.userId;
+    let input = that.data.commentInput;
     if (that.data.commentInput == "") {
       util.showErrorToast('请输入评论内容');
       return false;
@@ -246,6 +295,21 @@ Page({
           theone:"",
         });
         if (res.errno === 0) { 
+           //如果是评论,则对数据库的notify进行处理 
+              //自己对自己评论,不做通知
+              let userInfo = wx.getStorageSync('userInfo');
+              if(userInfo.uuid != userId){
+                util.request(api.AddNormalNotice, {
+                  type:3,
+                  action: 2,
+                  content:input,
+                  articleId:that.data.articleId,
+                  //从返回的数据得到commentid
+                  commentId:res.data.commentUuid,
+                  userId:userId
+                }, 'POST').then(function(res){
+                })
+              }
           //重新请求,为了实时刷新数据
           that.getDataAgain();
           wx.showToast({
@@ -269,6 +333,21 @@ Page({
           theone:""
         });
         if (res.errno === 0) {  
+          //如果是评论,则对数据库的notify进行处理 
+              //自己对自己评论,不做通知
+              let userInfo = wx.getStorageSync('userInfo');
+              if(userInfo.uuid != that.data.theoneuuid){
+                util.request(api.AddNormalNotice, {
+                  type:3,
+                  action:3,
+                  articleId:that.data.articleId,
+                  content:input,
+                  commentId:that.data.theOneLevelCommentUuid,
+                  replyCommentId:res.data.commentUuid,
+                  userId:that.data.theoneuuid
+                }, 'POST').then(function(res){
+                })
+             }
           that.getDataAgain();
           wx.showToast({
             title: '评论成功',

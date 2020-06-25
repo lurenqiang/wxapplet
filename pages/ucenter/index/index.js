@@ -13,11 +13,10 @@ Page({
       nickname: '点击登录',
       appletAvatar: '/images/my.png'
     },
-    order: {
-      unpaid: 0,
-      unship: 0,
-      unrecv: 0,
-      uncomment: 0
+    notReadNotice: {
+      notifyNotRead: 0,
+      inBoxNotRead: 0,
+      reflectComment: 0
     },
     hasLogin: false
   },
@@ -49,10 +48,10 @@ if (app.globalData.hasLogin) {
   });
 
   let that = this;
-  util.request(api.UserIndex).then(function(res) {
+  util.request(api.UserNotify).then(function(res) {
     if (res.errno === 0) {
       that.setData({
-        order: res.data.order
+        notReadNotice: res.data.notReadNotice
       });
     }
   });
@@ -132,6 +131,17 @@ if (app.globalData.hasLogin) {
         fail: function(res) {},
         complete: function(res) {},
       })
+    } else {
+      wx.navigateTo({
+        url: "/pages/auth/login/login"
+      });
+    };
+  },
+  goReflectProblem() {
+    if (this.data.hasLogin) {
+      wx.navigateTo({
+        url: "/pages/service/reflectProblem/reflectProblem"
+      });
     } else {
       wx.navigateTo({
         url: "/pages/auth/login/login"

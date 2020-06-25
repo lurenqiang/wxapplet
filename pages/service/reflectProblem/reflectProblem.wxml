@@ -1,4 +1,4 @@
-<!--pages/ucenter/feedback/feedback.wxml-->
+<!--pages/service/reflectProblem/reflectProblem.wxml-->
 <view class="container">
   <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
     <view class="picker">
@@ -9,7 +9,7 @@
     </view>
   </picker>
   <view class="fb-body">
-    <textarea class="content" placeholder="对我们小区小程序服务，你还有什么建议吗？请告诉我们..." bindinput="contentInput" maxlength="500" auto-focus="true" value="{{content}}" />
+    <textarea class="content" placeholder="小区问题的反映..." bindinput="contentInput" maxlength="500" auto-focus="true" value="{{content}}" />
     <view class="weui-uploader__files" id="uploaderFiles">
       <block wx:for="{{files}}" wx:key="*this">
         <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
@@ -22,7 +22,13 @@
     </view>
     <view class="text-count">{{contentLength}}/500</view>
   </view>
-  <view class="fb-mobile">
+  <view class="fb-mobile-address">
+    <view class="label">地址</view>
+    <view class="address-box">
+      <input class="address"  bindinput="addressInput" value="{{address}}" />
+      <image class="addressImage" src="/images/location.png" catchtap="getLocation"></image>
+      <van-icon class="clear-icon" name="close" wx:if="{{ address.length > 0 }}" catchtap="clearAddress"/>
+    </view>
     <view class="label">手机号码</view>
     <view class="mobile-box">
       <input class="mobile" maxlength="11" type="number" placeholder="方便我们与你联系" bindinput="mobileInput" value="{{mobile}}" />
@@ -32,3 +38,4 @@
 
   <view class="fb-btn" bindtap="submitFeedback">提交</view>
 </view>
+

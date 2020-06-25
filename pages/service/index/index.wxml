@@ -1,2 +1,25 @@
 <!--pages/service/index/index.wxml-->
-<text>pages/service/index/index.wxml</text>
+<view class="container">
+  <view class="ad">
+      
+  </view>
+  <view class="box" >
+    <view class="openDoor">
+      <image class="img3" src="/images/opendoor.png" bindtap="openDoor" ></image>
+       <!-- <text class="img-content">大门门禁</text> -->
+    </view>
+    <view class="service-box">
+      <view class="service-box-inner">
+        <image class="img" src="/images/reflect1.png" bindtap="reflectProblem"></image>
+        <text class="img-content">反馈问题</text>
+      </view>
+       <view class="service-box-inner">
+        <image class="img" src="/images/amount.png" bindtap="payBillment"></image>
+        <text class="img-content">缴费服务</text>
+      </view>
+    </view>    
+  </view>
+  
+</view>
+
+

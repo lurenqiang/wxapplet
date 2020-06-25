@@ -21,7 +21,7 @@ module.exports = {
   AuthGetInfo: WxApiRoot+'auth/getinfo',//更新个人信息
   AuthGetAccessToken: WxApiRoot+'auth/getAccessToken',//得到个人accessToken
   
-  UserIndex: WxApiRoot + 'user/index', //个人页面用户相关信息
+  UserNotify: WxApiRoot + 'notify/notifyNotReadCount', //个人页面用户相关信息
   IssueList: WxApiRoot + 'issue/list', //帮助信息
   
   FeedbackAdd: WxApiRoot + 'feedback/submit', //添加反馈
@@ -29,7 +29,6 @@ module.exports = {
 
   CouponList: WxApiRoot + 'coupon/list', //福利券列表
   CouponMyList: WxApiRoot + 'coupon/mylist', //我的福利券列表
-  //CouponSelectList: WxApiRoot + 'coupon/selectlist', //当前订单可用福利券列表
   CouponReceive: WxApiRoot + 'coupon/receive', //福利券领取
   CouponExchange: WxApiRoot + 'coupon/exchange', //福利券兑换
   CouponConsume: WxApiRoot + 'coupon/consume', //消费福利券
@@ -55,4 +54,10 @@ module.exports = {
   CheckContent:WxApiRoot + 'forum/checkContent',//监察发帖的内容是否包含非法信息
 
   StarAddOrDelete:WxApiRoot + 'star/addordelete', //添加或取消点赞
+
+  ReflectProblem:WxApiRoot + 'reflect/addreflectProblem', //反映问题
+  FaceRecognitionAdd:WxApiRoot + 'face/addFace', //注册脸部识别
+
+  AddNormalNotice:WxApiRoot + 'notify/normalAddNotice', //添加普通人的通知
+  DeleteNormalNotice:WxApiRoot + 'notify/normalDeleteNotice', //添加普通人的通知
 };

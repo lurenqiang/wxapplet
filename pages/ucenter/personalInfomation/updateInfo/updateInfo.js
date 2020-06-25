@@ -28,10 +28,21 @@ Page({
 
   },
   switchChange:function(e) {
+    let userInfo = wx.getStorageSync("userInfo");
+    console.log(userInfo)
     if (e.detail.value) {
-      this.setData({ sex: '男' });
+      if(userInfo.gender==1){
+        this.setData({ sex: '男' });
+      }else{
+        this.setData({ sex: '女' });
+      }   
     } else {
-      this.setData({ sex: '女' });
+      if(userInfo.gender==1){
+        this.setData({ sex: '女' });
+      }else{
+        this.setData({ sex: '男' });
+      }   
+      
     }
   },
   switchChange1:function(e) {
@@ -176,17 +187,18 @@ if (app.globalData.hasLogin) {
   updateDetail:function(e){
     let userInfo = wx.getStorageSync('userInfo');
     userInfo.appletAvatar = this.data.appletAvatar;
+    let status = userInfo.userStatus;
     userInfo.birthday = this.data.dates;
     if(this.data.sex=='男'){
       userInfo.gender = 1;
     }else if(this.data.sex=='女'){
       userInfo.gender = 2;
     }
-    if(this.data.userStatus=='游客'){
-      userInfo.userStatus = 1;
-    }else if(this.data.userStatus=='小区居民'){
-      userInfo.userStatus = 0;
-    }
+    // if(this.data.userStatus=='游客'){
+    //   userInfo.userStatus = 1;
+    // }else if(this.data.userStatus=='小区居民'){
+    //   userInfo.userStatus = 0;
+    // }
     if(this.data.realname!=null){
       userInfo.realname =this.data.realname;
     }
@@ -204,6 +216,10 @@ if (app.globalData.hasLogin) {
       success: function() {
       }
     });
+    if(status==1&&that.data.userStatus=='小区居民'){
+      //要对后台进行通告.进行对居民身份的修改....
+      
+    }
     util.request(api.AuthUpdateDetail, {
       userInfo:userInfo,
       picUrls: that.data.picUrls
@@ -211,18 +227,28 @@ if (app.globalData.hasLogin) {
       wx.hideLoading();
       if (res.errno === 0) {
         wx.setStorageSync('userInfo', userInfo);
-        wx.showToast({
-          title: '恭喜你更新成功！',
-          icon: 'success',
-          duration: 2000,
-          complete: function() {
-            that.setData({
-              hasPicture: false,
-              picUrls: [],
-              files: [],
-            });
-          }
-        });
+        if(status==1&&that.data.userStatus=='小区居民'){  
+          wx.showModal({
+            cancelColor: 'cancelColor',
+            title:"修改个人信息为小区居民,等待管理人员审核,其他信息更新成功!"
+          });
+          that.setData({
+            userStatus:'游客',
+          }) 
+        }else{
+          wx.showToast({
+            title: '恭喜你更新成功！',
+            icon: 'success',
+            duration: 2000,
+            complete: function() {
+              that.setData({
+                hasPicture: false,
+                picUrls: [],
+                files: [],
+              });
+            }
+          });
+        }
       } else {
         util.showErrorToast(res.errmsg);
       }

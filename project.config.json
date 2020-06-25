@@ -140,6 +140,34 @@
 					"id": -1,
 					"name": "pages/forum/publishArticle/publishArticle",
 					"pathName": "pages/forum/publishArticle/publishArticle",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/service/reflectProblem/reflectProblem",
+					"pathName": "pages/service/reflectProblem/reflectProblem",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/service/index/index",
+					"pathName": "pages/service/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/service/morePermission/morePermission",
+					"pathName": "pages/service/morePermission/morePermission",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/ucenter/myLifeService/myLifeService",
+					"pathName": "pages/ucenter/myLifeService/myLifeService",
 					"scene": null
 				}
 			]

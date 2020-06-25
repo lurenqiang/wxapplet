@@ -62,7 +62,7 @@ Page({
         success: function(res) {
           if (res.confirm) {
             util.request(api.FootprintDelete, {
-              id: footprintId
+              uuid: footprintId
             }, 'POST').then(function(res) {
               if (res.errno === 0) {
                 wx.showToast({
@@ -84,7 +84,7 @@ Page({
       });
     } else {
       wx.navigateTo({
-        url: '/pages/forum/articleDetail/articleDetail?uuid=' + uuid,
+        url: '/pages/forum/articleDetail/articleDetail?uuid=' + valueId,
       });
     }
 

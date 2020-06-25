@@ -106,7 +106,7 @@ Page({
     let that = this;
     let index = event.currentTarget.dataset.index;
     let valueId = this.data.collectList[index].valueId;
-    let uuid = this.data.collectList[index].uuid;
+   
     //触摸时间距离页面打开的毫秒数  
     var touchTime = that.data.touchEnd - that.data.touchStart;
     console.log(touchTime);
@@ -140,7 +140,7 @@ Page({
     } else {
       //点击查看详情页面
       wx.navigateTo({
-        url: '/pages/forum/articleDetail/articleDetail?uuid=' + uuid,
+        url: '/pages/forum/articleDetail/articleDetail?uuid=' + valueId,
       });
     }
   },
