@@ -1,0 +1,22 @@
+<!--pages/ucenter/importantNotice/importantNotice.wxml-->
+<view class="container">
+  <view class="no-collect" wx:if="{{unReadNoticeList.length <= 0}}">
+    <view class="c">
+      <text>没有未读消息</text>
+    </view>
+  </view>
+  <view class="unread_title" wx:if="{{unReadNoticeList.length>0}}">---未读信息---</view>
+  <view class="unread_message_list">
+    <view class="item" wx:for="{{unReadNoticeList}}" wx:key="uuid" data-index="{{index}}">
+      <view class="unread_info">
+        <view class="senderName">{{item.nickname}}</view>给您
+        <view class="content" wx:if="{{item.content!=null}}">{{item.content}}</view>
+        <view class="time">{{item.createTime}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="read_title" wx:if="{{hasReadNoticeList.length>0}}">---已读信息---</view>
+  <view class="read_message_list">
+    <view class="item" wx:for="{{hasReadNoticeList}}" wx:key="uuid" data-index="{{index}}"></view>
+  </view>
+</view>

@@ -14,18 +14,18 @@
       <view class='user_row_left'>我的事务</view> 
     </view>
     <view class='user_column'>
-      <view class='user_column_item' bindtap='goOrderIndex' data-index='1'>
+      <view class='user_column_item' bindtap='goImportantNotice' data-index='1'>
         <text class="user_column_item_badge" wx:if="{{notReadNotice.notifyNotRead != 0}}">{{notReadNotice.notifyNotRead}}</text>
         <image class='user_column_item_image' src='/images/notify.png'>
         </image>
         <view class='user_column_item_text'>重要通知</view>
       </view>
-      <view class='user_column_item' bindtap='goOrderIndex' data-index='2'>
+      <view class='user_column_item' bindtap='goinBox' data-index='2'>
         <text class="user_column_item_badge" wx:if="{{notReadNotice.inBoxNotRead != 0}}">{{notReadNotice.inBoxNotRead}}</text>
         <image class='user_column_item_image' src='/images/inbox.png'></image>
         <view class='user_column_item_text'>收件箱</view>
       </view>
-      <view class='user_column_item' bindtap='goAfterSale' data-index='3'>
+      <view class='user_column_item' bindtap='goReflectComment' data-index='3'>
         <text class="user_column_item_badge" wx:if="{{notReadNotice.reflectComment != 0}}">{{notReadNotice.reflectComment}}</text>
         <image class='user_column_item_image' src='/images/comment.png'></image>
         <view class='user_column_item_text'>后续评价</view>

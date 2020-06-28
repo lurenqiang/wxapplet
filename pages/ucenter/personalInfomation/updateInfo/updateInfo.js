@@ -216,10 +216,6 @@ if (app.globalData.hasLogin) {
       success: function() {
       }
     });
-    if(status==1&&that.data.userStatus=='小区居民'){
-      //要对后台进行通告.进行对居民身份的修改....
-      
-    }
     util.request(api.AuthUpdateDetail, {
       userInfo:userInfo,
       picUrls: that.data.picUrls
@@ -228,10 +224,18 @@ if (app.globalData.hasLogin) {
       if (res.errno === 0) {
         wx.setStorageSync('userInfo', userInfo);
         if(status==1&&that.data.userStatus=='小区居民'){  
-          wx.showModal({
-            cancelColor: 'cancelColor',
-            title:"修改个人信息为小区居民,等待管理人员审核,其他信息更新成功!"
-          });
+          //要对后台进行通告.进行对居民身份的修改....
+          util.request(api.AddPermissionNotice, {
+            type: 4,
+            action:5
+          }, 'POST').then(function(res) {
+            if(res.errno === 0){
+              wx.showModal({
+                cancelColor: 'cancelColor',
+                title:"修改个人信息为小区居民,等待管理人员审核,其他信息更新成功!"
+              });
+            }
+          })
           that.setData({
             userStatus:'游客',
           }) 

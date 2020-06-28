@@ -12,7 +12,6 @@
         <view class="title">{{item.title}}</view>
         <view class="author">{{item.author}}</view>
         <view class="publishTime">{{item.publishTime}}</view>
-        <!-- <view class="price">{{item.retailPrice}}</view> -->
       </view>
     </view>
   </view>

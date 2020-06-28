@@ -35,13 +35,17 @@ module.exports = {
 
   CollectList: WxApiRoot + 'collect/list', //收藏列表
   CollectAddOrDelete: WxApiRoot + 'collect/addordelete', //添加或取消收藏
+  DeleteCollectList:WxApiRoot + 'collect/deleteList', //批量删除收藏
 
   FootprintList: WxApiRoot + 'footprint/list', //足迹列表
   FootprintDelete: WxApiRoot + 'footprint/delete', //删除足迹
   FootprintAdd: WxApiRoot + 'footprint/add', //新增足迹
+  DeleteFootprintList:WxApiRoot + 'footprint/deleteList', //批量删除足迹
 
   ArticleList:WxApiRoot + 'forum/articleList', //文章列表
   ArticleDetail:WxApiRoot + 'forum/articleDetail', //帖子详细信息
+  MyArticleList:WxApiRoot + 'forum/myArticleList', //文章列表
+  DeleteArticle:WxApiRoot + 'forum/deleteArticle', //删除文章
   
   CommentList:WxApiRoot + 'comment/articleDetailComment', //帖子回复的相关信息
   AddComment:WxApiRoot + 'comment/addComment', //添加回复的相关信息
@@ -57,7 +61,14 @@ module.exports = {
 
   ReflectProblem:WxApiRoot + 'reflect/addreflectProblem', //反映问题
   FaceRecognitionAdd:WxApiRoot + 'face/addFace', //注册脸部识别
+  CheckFaceRecognition:WxApiRoot + 'face/checkFace', //检验脸部识别
+  DeleteFaceRecognition:WxApiRoot + 'face/deleteFace', //删除脸部识别
 
   AddNormalNotice:WxApiRoot + 'notify/normalAddNotice', //添加普通人的通知
-  DeleteNormalNotice:WxApiRoot + 'notify/normalDeleteNotice', //添加普通人的通知
+  DeleteNormalNotice:WxApiRoot + 'notify/normalDeleteNotice', //删除普通人的通知
+  AddPermissionNotice:WxApiRoot + 'notify/addPermissionNotice', //添加申请的通知
+  CheckPermissionNotice:WxApiRoot + 'notify/checkPermissionNotice', //检查是否发送过申请的通知
+
+  GetImportantNotice:WxApiRoot + 'notify/getImportantNotice',//得到重要通知的列表
+
 };

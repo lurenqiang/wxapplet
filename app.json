@@ -21,7 +21,13 @@
     "pages/forum/publishArticle/publishArticle",
     "pages/forum/articleDetail/articleDetail",
     "pages/service/reflectProblem/reflectProblem",
-    "pages/service/billPayment/billPayment"
+    "pages/service/billPayment/billPayment",
+    "pages/ucenter/getPermission/getPermission",
+    "pages/service/faceRecognition/faceRecognition",
+    "pages/forum/myarticle/myarticle",
+    "pages/ucenter/importantNotice/importantNotice",
+    "pages/ucenter/inBox/inBox",
+    "pages/ucenter/reflectComment/reflectComment"
   ],
   "window":{
     "backgroundTextStyle":"light",

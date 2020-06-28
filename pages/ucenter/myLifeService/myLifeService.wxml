@@ -1,9 +1,39 @@
 <!--pages/ucenter/myLifeService/myLifeService.wxml-->
 <view class="container">
-   <view class="more_permission"> 
-    <block wx:for="{{files}}" wx:key="*this">
-      </block>
-      <image class="permisson_img" src="/images/more_permission.png" bindtap="chooseImage"></image>
+   <view class="service_module">
+       <!-- 缴费模块 -->
+      <view class="service_module_box">
+         <image class="service_module_box_img" src="/images/bill.png" bindtap="manageBill"></image>
+         <view class="service_module_box_bottom">
+             <text class="service_module_box_text">缴费管理</text>
+            <!-- 下拉需要显示的列表 -->
+            <image class="select_img" src="/images/down.png" bindtap="bindShowPayMsg"></image>
+            <view class="select_box1" wx:if="{{selectedpay}}">
+               <view wx:for="{{payGrades}}" wx:key="unique">
+                  <view class="select_one" catchtap="managePaySelect" data-name="{{item}}">{{item}}</view>
+               </view>
+            </view>
+         </view>
+      </view>
+   <!-- 帖子管理模块 -->
+      <view class="service_module_box">
+         <image class="service_module_box_img" src="/images/tiezi.png" bindtap="manageTiezi"></image>
+         <text class="service_module_box_text">帖子管理</text>
+      </view>
+   <!-- 人脸模块 -->
+      <view class="service_module_box"> 
+         <image class="service_module_box_img" src="/images/more_permission.png"></image>
+         <view class="service_module_box_bottom">
+            <text class="service_module_box_text">人脸管理</text>
+            <!-- 下拉需要显示的列表 -->
+            <image class="select_img" src="/images/down.png" bindtap="bindShowMsg"></image>
+            <view class="select_box1" wx:if="{{selectedface}}">
+               <view wx:for="{{faceGrades}}" wx:key="unique">
+                  <view class="select_one" catchtap="manageFaceSelect" data-name="{{item}}">{{item}}</view>
+               </view>
+            </view>
+         </view>
+      </view>
    </view>
-   <view class="fb-btn" bindtap="submitPermission">提交</view>
+  
 </view>

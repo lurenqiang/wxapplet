@@ -1,0 +1,7 @@
+<!--pages/ucenter/getPermission/getPermission.wxml-->
+<view class="container1">
+  <view class="login-box">
+    <button type="primary" class="wx-login-btn" bindtap="getCommunityStatus">申请为小区居民</button>
+    <button type="primary" class="account-login-btn" bindtap="getFaceRecognition">申请人脸识别</button>
+  </view>
+</view>

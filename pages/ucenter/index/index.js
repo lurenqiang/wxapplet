@@ -100,37 +100,33 @@ if (app.globalData.hasLogin) {
       });
     }
   },
-  goOrder() {
+  goImportantNotice(){
     if (this.data.hasLogin) {
-      try {
-        wx.setStorageSync('tab', 0);
-      } catch (e) {
-
-      }
       wx.navigateTo({
-        url: "/pages/ucenter/order/order"
+        url: "/pages/ucenter/importantNotice/importantNotice"
       });
     } else {
       wx.navigateTo({
         url: "/pages/auth/login/login"
       });
-    }
+    };
   },
-  goOrderIndex(e) {
+  goinBox(){
     if (this.data.hasLogin) {
-      let tab = e.currentTarget.dataset.index
-      let route = e.currentTarget.dataset.route
-      try {
-        wx.setStorageSync('tab', tab);
-      } catch (e) {
-
-      }
       wx.navigateTo({
-        url: route,
-        success: function(res) {},
-        fail: function(res) {},
-        complete: function(res) {},
-      })
+        url: "/pages/ucenter/inBox/inBox"
+      });
+    } else {
+      wx.navigateTo({
+        url: "/pages/auth/login/login"
+      });
+    };
+  },
+  goReflectComment(){
+    if (this.data.hasLogin) {
+      wx.navigateTo({
+        url: "/pages/ucenter/reflectComment/reflectComment"
+      });
     } else {
       wx.navigateTo({
         url: "/pages/auth/login/login"
@@ -141,6 +137,17 @@ if (app.globalData.hasLogin) {
     if (this.data.hasLogin) {
       wx.navigateTo({
         url: "/pages/service/reflectProblem/reflectProblem"
+      });
+    } else {
+      wx.navigateTo({
+        url: "/pages/auth/login/login"
+      });
+    };
+  },
+  goPermission(){
+    if (this.data.hasLogin) {
+      wx.navigateTo({
+        url: "/pages/ucenter/getPermission/getPermission"
       });
     } else {
       wx.navigateTo({
@@ -161,9 +168,16 @@ if (app.globalData.hasLogin) {
   },
   goLifeService() {
     if (this.data.hasLogin) {
-      wx.navigateTo({
-        url: "/pages/ucenter/myLifeService/myLifeService"
-      });
+      if(wx.getStorageSync('userInfo').userStatus !=1 && wx.getStorageSync('userInfo').status==0){
+        wx.navigateTo({
+          url: "/pages/ucenter/myLifeService/myLifeService"
+        });
+      }else{
+        wx.showModal({
+          cancelColor: 'cancelColor',
+          title:'请确保您为小区居民且账号可用!'
+        })
+      }
     } else {
       wx.navigateTo({
         url: "/pages/auth/login/login"

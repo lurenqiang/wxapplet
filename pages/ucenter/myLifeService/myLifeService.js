@@ -11,15 +11,78 @@ Page({
   data: {
     picUrls: [],
     hasPicture: false,
-    files:[]
+    files:[],
+    faceGrades:['人脸注册','人脸更新','人脸注销'],
+    payGrades:['月卡缴费','物业缴费','年度账单'],
+    selectedface: false,
+    selectedpay:false
   },
 
-  chooseImage: function(e) {
-    if (this.data.files.length >= 1) {
-      util.showErrorToast('只能上传1张图片')
-      return false;
-    }
+  // 点击下拉框 
+  bindShowMsg() {
+    this.setData({
+      selectedface: !this.data.selectedface
+    })
+  },
+  bindShowPayMsg(){
+    this.setData({
+      selectedpay: !this.data.selectedpay
+    })
+  },
 
+  manageFaceSelect:function(e){
+    let that = this;
+    var method = e.currentTarget.dataset.name;
+    if(method == '人脸注册'){
+      util.request(api.CheckFaceRecognition, {
+      }, 'GET').then(function(res) {
+        if(res.errno==0){
+          if(res.data.hasFace==true){
+            wx.showModal({
+              cancelColor: 'cancelColor',
+              title: '已经进行过人脸注册',
+            })
+          }else{
+            that.chooseImage();
+            //that.submitPermission();
+          }
+        }
+      })
+    }else if(method=="人脸更新"){
+      util.request(api.CheckFaceRecognition, {
+      }, 'GET').then(function(res) {
+        if(res.errno==0){
+          if(res.data.hasFace==false){
+            wx.showModal({
+              cancelColor: 'cancelColor',
+              title: '请先进行过人脸注册',
+            })
+          }else{
+            that.chooseImage();
+          }
+        }
+      })  
+    }else if(method=="人脸注销"){
+      util.request(api.DeleteFaceRecognition, {
+      }, 'GET').then(function(res) {
+          if(res.errno==0){
+            wx.showToast({
+              title: '人脸注销成功!',
+            })
+            that.setData({
+              selectedface:false
+            })
+          }else{
+            wx.showModal({
+              cancelColor: 'cancelColor',
+              title: res.errmsg,
+            })
+          }
+      })
+    }
+  },
+
+  chooseImage(){
     var that = this;
     wx.chooseImage({
       count: 1,
@@ -49,6 +112,7 @@ Page({
             hasPicture: true,
             files: [],
           })
+          that.submitPermission();
         }
       },
       fail: function(e) {
@@ -68,32 +132,13 @@ Page({
 
   },
 
-  submitPermission: function(e) {
-    if (!app.globalData.hasLogin) {
-      wx.navigateTo({
-        url: "/pages/auth/login/login"
-      });
-    }
-
+  submitPermission() {
     let that = this;
-    let userInfo = wx.getStorageSync('userInfo');
-    if(userInfo.userStatus==1){
-      wx.showToast({
-        title: '必须为本小区居民!',
-      })
-      return false;
-    }
-    if(that.data.hasPicture==false){
-      wx.showToast({
-        title: '需要上传一张人脸照片!',
-      })
-      return false;
-    }
+    console.log("12")
     util.request(api.FaceRecognitionAdd, {
       picUrls: that.data.picUrls
     }, 'POST').then(function(res) {
       wx.hideLoading();
-
       if (res.errno === 0) {
         wx.showToast({
           title: '申请人脸开门成功！',
@@ -104,6 +149,7 @@ Page({
               picUrls: [],
               hasPicture:false,
               files: [],
+              selectedface:false,
             });
           }
         });
@@ -112,6 +158,12 @@ Page({
       }
 
     });
+  },
+
+  manageTiezi:function(){
+    wx.navigateTo({
+      url: '/pages/forum/myarticle/myarticle',
+    })
   },
   /**
    * 生命周期函数--监听页面加载
