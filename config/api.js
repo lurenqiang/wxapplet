@@ -70,5 +70,7 @@ module.exports = {
   CheckPermissionNotice:WxApiRoot + 'notify/checkPermissionNotice', //检查是否发送过申请的通知
 
   GetImportantNotice:WxApiRoot + 'notify/getImportantNotice',//得到重要通知的列表
+  GetInboxNotice:WxApiRoot + 'notify/getInboxNotice',//得到收件箱的列表
+  GetReadInboxNotice:WxApiRoot + 'notify/readInboxNotice',//得到收件箱的列表
 
 };

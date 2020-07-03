@@ -235,18 +235,7 @@ Page({
         that.hasonShow = true;
         return
       }
-    console.log("onshow显示-----");
-    util.request(api.ArticleList, {
-      page: that.data.page,
-      limit: that.data.limit
-    }).then(function(res) {
-      if (res.errno === 0) {
-        that.setData({
-          articleList: res.data.list,
-          totalPages: res.data.pages,
-        });
-      }
-    });
+    that.getDataAgain();
   },
 
   /**
@@ -267,7 +256,26 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    wx.showNavigationBarLoading() //在标题栏中显示加载
+    //自己重新请求数据
+    this.getDataAgain();
+    wx.hideNavigationBarLoading() //完成停止加载
+    wx.stopPullDownRefresh() //停止下拉刷新
+  },
+  
+  getDataAgain:function(){
+    let that = this;
+    util.request(api.ArticleList, {
+      page: 1,
+      limit: 10
+    }).then(function(res) {
+      if (res.errno === 0) {
+        that.setData({
+          articleList: res.data.list,
+          totalPages: res.data.pages,
+        });
+      }
+    });
   },
 
   /**

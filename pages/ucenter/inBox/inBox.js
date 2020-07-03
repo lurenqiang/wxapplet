@@ -1,13 +1,40 @@
 // pages/ucenter/inBox/inBox.js
+var util = require('../../../utils/util.js');
+var api = require('../../../config/api.js');
+
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    unReadNoticeList:[],
+    hasReadNoticeList:[]
   },
 
+  getInboxNotice(){
+    let that= this;
+    util.request(api.GetInboxNotice, {
+      type:3,
+    }, 'POST').then(function(res){
+      if(res.errno==0){
+        that.setData({
+          unReadNoticeList:res.data.unReadNoticeList,
+          hasReadNoticeList:res.data.hasReadNoticeList
+        })
+        that.getread();
+      }
+    })
+  },
+
+  getread(){
+    //批量阅读
+    util.request(api.GetReadInboxNotice, {
+      type:3,
+    }, 'POST').then(function(res){
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -26,7 +53,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getInboxNotice();
   },
 
   /**

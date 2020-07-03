@@ -1,1 +1,130 @@
 /* pages/ucenter/importantNotice/importantNotice.wxss */
+page {
+  background: #f4f4f4;
+  min-height: 100%;
+}
+
+.container {
+  background: #f4f4f4;
+  min-height: 100%;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.no-collect .c text {
+  margin: 0 auto;
+  display: block;
+  width: 258rpx;
+  height: 29rpx;
+  line-height: 29rpx;
+  text-align: center;
+  font-size: 29rpx;
+  color: #999;
+}
+
+.unread_title text{
+  margin: 0 auto;
+  display: block;
+  width: 258rpx;
+  height: 29rpx;
+  line-height: 29rpx;
+  text-align: center;
+  font-size: 29rpx;
+  color: #999;
+}
+
+.unread_message_list{
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  background: #fff;
+  padding: 50rpx;
+  border-top: 1px solid #e1e1e1;
+}
+
+.unread_message_list .item{
+  height: auto;
+  width: 100%;
+  background: #fff;
+  padding: 30rpx;
+  margin: 40rpx;
+  border-bottom: 1px solid #e1e1e1;
+  display: flex;
+  flex-direction: column;
+}
+
+.unread_message_list .item .time{
+  font-size: 24rpx;
+  align-items: center;
+  padding-bottom: 10rpx;
+}
+
+.unread_message_list .item .unread_info{
+  height: auto;
+  width: 100%;
+  margin-left: 50rpx;
+  margin-right: 50rpx;
+  padding-bottom: 10rpx;
+  display: flex;
+  flex-direction: row;
+  min-height: 200rpx;
+}
+
+.unread_message_list .item .unread_info .senderInfo{
+  height: 140rpx;
+  width: 100rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.unread_message_list .item .unread_info .senderInfo .img{
+  height: 100rpx;
+  width: 100rpx;
+}
+
+.unread_message_list .item .unread_info .senderInfo .senderName{
+  height: 20rpx;
+  width: 20rpx;
+  flex-wrap: wrap;
+}
+
+.unread_message_list .item .unread_info .content{
+  font-size: 20rpx;
+  flex-wrap: wrap;
+}
+
+.read_title text{
+  margin: 0 auto;
+  display: block;
+  width: 258rpx;
+  height: 29rpx;
+  line-height: 29rpx;
+  text-align: center;
+  font-size: 29rpx;
+  color: #999;
+}
+
+.read_message_list{
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  background: #fff;
+  padding: 50rpx;
+  border-top: 1px solid #e1e1e1;
+}
+
+.read_message_list .item{
+  height: auto;
+  width: 100%;
+  background: #fff;
+  padding: 30rpx;
+  margin: 40rpx;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.read_message_list .item .content{
+  font-size: 24rpx;
+  flex-wrap: wrap;
+  padding: 20rpx;
+}

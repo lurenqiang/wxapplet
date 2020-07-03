@@ -49,16 +49,16 @@
       <view class="reply-comment-list" wx:if="{{item.replyCommentList.length>0}}">
         <view class="reply-comment" bindtap="bindReply1Now" data-index="{{index}}" bindtouchstart="touchStart" bindtouchend="touchEnd" wx:for="{{item.replyCommentList}}" wx:key="uuid" wx:for-item="ritem" wx:for-index="rindex" data-rindex="{{rindex}}">
           <view class="reply-comment-info">
-            <view class="reply-user">{{ritem.userName}}</view>回复
-            <view class="reply-to">{{ritem.replyPersonName}}</view>:
-            <view class="reply-comment">{{ritem.replyComment}}</view>
+            <view class="reply-user">{{ritem.userName}}回复{{ritem.replyPersonName}}: {{ritem.replyComment}}</view>
+            <!-- <view class="reply-to">{{ritem.replyPersonName}}:</view>
+            <view class="reply-comment-content">{{ritem.replyComment}}</view> -->
           </view>
         </view>
       </view>
     </view>
   </view>
-  <view class="reply-comment-bottom">
-    <input class="reply" placeholder="评论{{theone}}" bindinput="bindCommentInput" style="bottom" value="{{commentInput}}"></input>
+  <view class="reply-comment-bottom" style="bottom">
+    <input class="reply" placeholder="评论{{theone}}" bindinput="bindCommentInput" value="{{commentInput}}"></input>
     <button class="fb-btn" bindtap="submitComment">评论</button> 
   </view>
 </view>
