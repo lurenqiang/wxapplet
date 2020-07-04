@@ -1,1 +1,163 @@
 /* pages/ucenter/reflectComment/reflectComment.wxss */
+page {
+  background: #f4f4f4;
+  min-height: 100%;
+}
+
+.container {
+  background: #f4f4f4;
+  min-height: 100%;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.no-collect .c text {
+  margin: 0 auto;
+  display: block;
+  width: 258rpx;
+  height: 29rpx;
+  line-height: 29rpx;
+  text-align: center;
+  font-size: 29rpx;
+  color: #999;
+}
+
+.unread_title text{
+  margin: 0 auto;
+  display: block;
+  width: 258rpx;
+  height: 29rpx;
+  line-height: 29rpx;
+  text-align: center;
+  font-size: 29rpx;
+  color: #999;
+}
+
+.unread_message_list{
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  background: #fff;
+  padding: 50rpx;
+  border-top: 1px solid #e1e1e1;
+}
+
+.unread_message_list .item{
+  height: auto;
+  width: 100%;
+  background: #fff;
+  padding: 30rpx;
+  border-bottom: 1px solid #e1e1e1;
+  display: flex;
+  flex-direction: column;
+}
+
+.unread_message_list .item .time{
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10rpx;
+}
+
+.unread_message_list .item .uncomment{
+  height: auto;
+  width: 100%;
+  margin-left: 50rpx;
+  margin-right: 50rpx;
+  padding-bottom: 10rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-size: 29rpx;
+}
+
+.unread_message_list .item .uncomment .content{
+  width: 75%;
+  display: flex;
+}
+
+.unread_message_list .item .uncomment .getCommentstatus{
+  padding-left: 20rpx;
+  align-items: center;
+}
+
+.read_title text{
+  margin: 0 auto;
+  display: block;
+  width: 258rpx;
+  height: 29rpx;
+  line-height: 29rpx;
+  text-align: center;
+  font-size: 29rpx;
+  color: #999;
+}
+
+.read_message_list{
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  background: #fff;
+  padding: 50rpx;
+  border-top: 1px solid #e1e1e1;
+}
+
+.read_message_list .item{
+  height: auto;
+  width: 100%;
+  background: #fff;
+  padding: 30rpx;
+  margin: 40rpx;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.read_message_list .item .problem{
+  font-size: 24rpx;
+  flex-wrap: wrap;
+  padding: 20rpx;
+}
+
+.read_message_list .item .comment{
+  font-size: 29rpx;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-left:200rpx;
+}
+
+.read_message_list .item .readTime{
+  font-size: 20rpx;
+  flex-wrap: wrap;
+  padding-top: 10rpx;
+  width: 100%;
+  padding-left:200rpx;
+}
+
+.reply-comment-bottom{
+  width: 100%;
+  height:70rpx;
+  padding-top: 10rpx;
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  bottom: 0rpx;
+  background-color:#e1e1e1;
+}
+
+.reply-comment-bottom .reply{
+  width: 75%;
+  height: 60rpx;
+  background: #fff;
+}
+
+.reply-comment-bottom .fb-btn{
+  width: 20%;
+  height: 60rpx;
+  position: absolute;
+  right: 0rpx;
+  text-align: center;
+  background-color: rgb(95, 243, 10);
+}
+

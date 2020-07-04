@@ -70,7 +70,12 @@ module.exports = {
   CheckPermissionNotice:WxApiRoot + 'notify/checkPermissionNotice', //检查是否发送过申请的通知
 
   GetImportantNotice:WxApiRoot + 'notify/getImportantNotice',//得到重要通知的列表
+  DeleteImportantNotice:WxApiRoot + 'notify/deleteImportantNotice',//删除重要通知的列表
+  ReadImportantNotice:WxApiRoot+ 'notify/readImportantNotice',//阅读重要通知
   GetInboxNotice:WxApiRoot + 'notify/getInboxNotice',//得到收件箱的列表
   GetReadInboxNotice:WxApiRoot + 'notify/readInboxNotice',//得到收件箱的列表
+  GetReflectProblemList:WxApiRoot + 'reflect/getReflectList',//得到评价的列表
+  DeleteReflectProblem:WxApiRoot + 'reflect/deleteReflect',//删除评价
+  AddReflectProblemComment:WxApiRoot + 'reflect/addReflectComment',//删除评价
 
 };

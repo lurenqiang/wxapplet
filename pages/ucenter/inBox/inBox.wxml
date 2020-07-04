@@ -7,21 +7,30 @@
   </view>
   <view class="unread_title" wx:if="{{unReadNoticeList.length>0}}">---未读信息---</view>
   <view class="unread_message_list">
-    <view class="item" wx:for="{{unReadNoticeList}}" wx:key="uuid" data-index="{{index}}">
+    <view class="item" wx:for="{{unReadNoticeList}}" wx:key="uuid" data-index="{{index}}" bindtap="openDetailNotRead" bindtouchstart="touchStart" bindtouchend="touchEnd">
+      <view class="time">{{item.createTime}}</view>
       <view class="unread_info">
-        <view class="senderName">{{item.nickname}}</view>给您
+        <view class="senderInfo">
+          <image class="img" src="{{item.avatarUrl}}"></image>
+          <view class="senderName">{{item.nickname}}</view>
+        </view>
+        <view class="dianzan" wx:if="{{item.action==1}}">点赞了你的文章/评论</view>
+        <view class="comment" wx:if="{{item.action==2}}">评论了你的文章</view>
+        <view class="reply-comment" wx:if="{{item.action==3}}">评论了你的评论</view>
         <view class="content" wx:if="{{item.content!=null}}">{{item.content}}</view>
-        <view class="time">{{item.createTime}}</view>
       </view>
     </view>
   </view>
   <view class="read_title" wx:if="{{hasReadNoticeList.length>0}}">---已读信息---</view>
   <view class="read_message_list">
-    <view class="item" wx:for="{{hasReadNoticeList}}" wx:key="uuid" data-index="{{index}}">
+    <view class="item" wx:for="{{hasReadNoticeList}}" wx:key="uuid" data-index="{{index}}" bindtap="openDetailHasRead" bindtouchstart="touchStart" bindtouchend="touchEnd">
     <view class="hasread_info">
-        <view class="senderName">{{item.nickname}}</view>给您
+        <view class="senderName">{{item.nickname}}</view>
+        <view class="dianzan" wx:if="{{item.action==1}}">点赞了你的文章/评论</view>
+        <view class="comment" wx:if="{{item.action==2}}">评论了你的文章:</view>
+        <view class="reply-comment" wx:if="{{item.action==3}}">评论了你的评论:</view>
         <view class="content" wx:if="{{item.content!=null}}">{{item.content}}</view>
-        <view class="time">{{item.createTime}}</view>
+        <view class="readTime">{{item.readTime}}</view>
       </view></view>
   </view>
 </view>

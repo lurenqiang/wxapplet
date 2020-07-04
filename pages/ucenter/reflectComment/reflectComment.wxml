@@ -1,2 +1,31 @@
-<!--pages/ucenter/reflectComment/reflectComment.wxml-->
-<text>pages/ucenter/reflectComment/reflectComment.wxml</text>
+
+<view class="container">
+  <view class="no-collect" wx:if="{{unCommentWxReflectProblemList.length <= 0}}">
+    <view class="c">
+      <text>没有未评价的报修单</text>
+    </view>
+  </view>
+  <view class="unread_title" wx:if="{{unCommentWxReflectProblemList.length>0}}"><text>---未评价---</text></view>
+  <view class="unread_message_list">
+    <view class="item" wx:for="{{unCommentWxReflectProblemList}}" wx:key="uuid" data-index="{{index}}" bindtap="openDetailNotRead" bindtouchstart="touchStart" bindtouchend="touchEnd" >
+      <view class="time">{{item.updateTime}}</view>
+      <view class="uncomment">
+        <view class="content" wx:if="{{item.content!=null}}">{{item.content}}</view>
+        <view class="getCommentstatus" bindtap="getCommentstatus" data-index="{{index}}">评价</view>
+      </view>
+    </view>
+  </view>
+  <view class="read_title" wx:if="{{hasCommentWxReflectProblemList.length>0}}"><text>---已评价---</text></view>
+  <view class="read_message_list">
+    <view class="item" wx:for="{{hasCommentWxReflectProblemList}}" wx:key="uuid" data-index="{{index}}" bindtap="openDetailHasRead" bindtouchstart="touchStart" bindtouchend="touchEnd" >
+      <view class="problem">{{item.content}}</view>
+      <view class="comment">评价:{{item.comment}}</view>
+      <view class="readTime">{{item.updateTime}}</view>
+    </view>
+  </view>
+ <view class="reply-comment-bottom" wx:if="{{hasComment}}" style="bottom">
+    <input class="reply" placeholder="评价" bindinput="bindCommentInput" value="{{commentInput}}"></input>
+    <button class="fb-btn" bindtap="submitComment">评论</button> 
+  </view>
+</view>
+

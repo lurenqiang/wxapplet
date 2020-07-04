@@ -56,7 +56,9 @@ page {
 
 .unread_message_list .item .time{
   font-size: 24rpx;
+  display: flex;
   align-items: center;
+  justify-content: center;
   padding-bottom: 10rpx;
 }
 
@@ -84,14 +86,17 @@ page {
 }
 
 .unread_message_list .item .unread_info .senderInfo .senderName{
-  height: 20rpx;
-  width: 20rpx;
+  height: 40rpx;
+  width: 100rpx;
   flex-wrap: wrap;
+  font-size: 20rpx;
 }
 
 .unread_message_list .item .unread_info .content{
   font-size: 20rpx;
   flex-wrap: wrap;
+  padding-left: 40rpx;
+  align-items: center;
 }
 
 .read_title text{
@@ -120,6 +125,8 @@ page {
   background: #fff;
   padding: 30rpx;
   margin: 40rpx;
+  display: flex;
+  flex-direction: column;
   border-bottom: 1px solid #e1e1e1;
 }
 
@@ -127,4 +134,10 @@ page {
   font-size: 24rpx;
   flex-wrap: wrap;
   padding: 20rpx;
+}
+
+.read_message_list .item .readTime{
+  font-size: 24rpx;
+  flex-wrap: wrap;
+  right: 0rpx;
 }

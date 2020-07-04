@@ -10,7 +10,7 @@ Page({
    */
   data: {
     unReadNoticeList:[],
-    hasReadNoticeList:[]
+    hasReadNoticeList:[],
   },
 
   getImportantNotice(){
@@ -25,6 +25,114 @@ Page({
           hasReadNoticeList:res.data.hasReadNoticeList
         })
       }
+    })
+  },
+  openDetailNotRead(event) {
+    let index = event.currentTarget.dataset.index;
+    let uuid = this.data.unReadNoticeList[index].uuid;
+    let that =this;
+    //点击查看详情页面
+     //触摸时间距离页面打开的毫秒数  
+    var touchTime = that.data.touchEnd - that.data.touchStart;
+    //如果按下时间大于350为长按  
+    if (touchTime > 350) {
+      wx.showModal({
+        title: '',
+        content: '确定删除此未读重要通知吗？',
+        success: function(res) {
+          if (res.confirm) {
+            util.request(api.DeleteImportantNotice, {
+              uuid: uuid
+            }, 'POST').then(function(res) {
+              if (res.errno === 0) {
+                wx.showToast({
+                  title: '删除成功',
+                  icon: 'success',
+                  duration: 2000
+                });
+                that.data.unReadNoticeList.splice(index, 1)
+                that.setData({
+                  unReadNoticeList: that.data.unReadNoticeList
+                });
+              }
+            });
+          }
+        }
+      })
+    }else{
+        //打开小文本框然后进行读后处理
+        wx.showModal({
+          //cancelColor: 'cancelColor',
+          title:'通知',
+          content:that.data.unReadNoticeList[index].content,
+          success: function(res){
+            if (res.confirm) {
+              util.request(api.ReadImportantNotice, {
+                uuid: uuid
+              }, 'POST').then(function(res) {
+                if (res.errno === 0) {
+                  //刷新数据
+                  that.getImportantNotice();
+                }
+              })
+            }
+          }
+        })
+    } 
+  },
+
+  openDetailHasRead(event){
+    let index = event.currentTarget.dataset.index;
+    let uuid = this.data.hasReadNoticeList[index].uuid;
+    let that =this;
+    //点击查看详情页面
+     //触摸时间距离页面打开的毫秒数  
+    var touchTime = that.data.touchEnd - that.data.touchStart;
+    //如果按下时间大于350为长按  
+    if (touchTime > 350) {
+      wx.showModal({
+        title: '',
+        content: '确定删除此重要通知吗？',
+        success: function(res) {
+          if (res.confirm) {
+            util.request(api.DeleteImportantNotice, {
+              uuid: uuid
+            }, 'POST').then(function(res) {
+              if (res.errno === 0) {
+                wx.showToast({
+                  title: '删除成功',
+                  icon: 'success',
+                  duration: 2000
+                });
+                that.data.hasReadNoticeList.splice(index, 1)
+                that.setData({
+                  hasReadNoticeList: that.data.hasReadNoticeList
+                });
+              }
+            });
+          }
+        }
+      })
+    }else{
+      wx.showModal({
+        cancelColor: 'cancelColor',
+        title:'通知',
+        content:that.data.hasReadNoticeList[index].content
+      })
+    } 
+  },
+  //按下事件开始  
+  touchStart: function(e) {
+    let that = this;
+    that.setData({
+      touchStart: e.timeStamp
+    })
+  },
+  //按下事件结束  
+  touchEnd: function(e) {
+    let that = this;
+    that.setData({
+      touchEnd: e.timeStamp
     })
   },
   /**

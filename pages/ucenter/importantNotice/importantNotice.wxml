@@ -7,7 +7,7 @@
   </view>
   <view class="unread_title" wx:if="{{unReadNoticeList.length>0}}"><text>---未读信息---</text></view>
   <view class="unread_message_list">
-    <view class="item" wx:for="{{unReadNoticeList}}" wx:key="uuid" data-index="{{index}}" bindtap="openDetailNotRead">
+    <view class="item" wx:for="{{unReadNoticeList}}" wx:key="uuid" data-index="{{index}}" bindtap="openDetailNotRead" bindtouchstart="touchStart" bindtouchend="touchEnd" >
       <view class="time">{{item.createTime}}</view>
       <view class="unread_info">
         <view class="senderInfo">
@@ -20,8 +20,9 @@
   </view>
   <view class="read_title" wx:if="{{hasReadNoticeList.length>0}}"><text>---已读信息---</text></view>
   <view class="read_message_list">
-    <view class="item" wx:for="{{hasReadNoticeList}}" wx:key="uuid" data-index="{{index}}" bindtap="openDetailHasRead">
+    <view class="item" wx:for="{{hasReadNoticeList}}" wx:key="uuid" data-index="{{index}}" bindtap="openDetailHasRead" bindtouchstart="touchStart" bindtouchend="touchEnd" >
       <view class="content">{{item.content}}</view>
+      <view class="readTime">{{item.readTime}}</view>
     </view>
   </view>
 </view>
